@@ -1,549 +1,800 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeNest | Buy. Sell. Discover.</title>
-    <meta name="description" content="TradeNest is a simple marketplace for buying, selling and discovering great items.">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fa;
-            color: #172033;
-            line-height: 1.6;
-        }
-        header {
-            background: #111827;
-            color: white;
-            padding: 18px 6%;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-        }
-        .nav {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        .logo span {
-            color: #f4b942;
-        }
-        nav {
-            display: flex;
-            gap: 25px;
-        }
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-        nav a:hover {
-            color: #f4b942;
-        }
-        .hero {
-            background: linear-gradient(135deg, #111827, #24324a);
-            color: white;
-            padding: 90px 6%;
-        }
-        .hero-inner {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .hero h1 {
-            font-size: clamp(2.7rem, 6vw, 5rem);
-            line-height: 1.05;
-            margin-bottom: 25px;
-            letter-spacing: -2px;
-        }
-        .hero h1 span {
-            color: #f4b942;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: #d6dbe5;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-        .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .btn {
-            display: inline-block;
-            padding: 14px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.2s ease;
-        }
-        .btn-primary {
-            background: #f4b942;
-            color: #111827;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            background: #ffc957;
-        }
-        .btn-secondary {
-            border: 1px solid #64748b;
-            color: white;
-        }
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.08);
-        }
-        .market-card {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(8px);
-        }
-        .market-card h3 {
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-        .market-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.12);
-        }
-        .market-item:last-child {
-            border-bottom: none;
-        }
-        .market-item span:last-child {
-            color: #f4b942;
-            font-weight: bold;
-        }
-        section {
-            padding: 75px 6%;
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
-        .section-heading {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-        .section-heading h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        .section-heading p {
-            color: #667085;
-            max-width: 650px;
-            margin: auto;
-        }
-        .search-box {
-            max-width: 750px;
-            margin: -35px auto 50px;
-            position: relative;
-        }
-        .search-box form {
-            display: flex;
-            background: white;
-            padding: 8px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(15,23,42,0.12);
-        }
-        .search-box input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 15px;
-            font-size: 1rem;
-        }
-        .search-box button {
-            border: none;
-            background: #f4b942;
-            color: #111827;
-            padding: 0 24px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-        .category {
-            background: white;
-            padding: 28px 20px;
-            border-radius: 14px;
-            text-align: center;
-            border: 1px solid #e5e7eb;
-            transition: 0.2s ease;
-        }
-        .category:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 25px rgba(15,23,42,0.08);
-        }
-        .category .icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-        .category h3 {
-            font-size: 1rem;
-        }
-        .listings {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-        .listing {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            transition: 0.2s ease;
-        }
-        .listing:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(15,23,42,0.1);
-        }
-        .listing-image {
-            height: 200px;
-            background: linear-gradient(135deg, #e5e7eb, #cbd5e1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-        .listing-content {
-            padding: 22px;
-        }
-        .listing-content h3 {
-            margin-bottom: 8px;
-        }
-        .price {
-            color: #c18400;
-            font-size: 1.35rem;
-            font-weight: 800;
-            margin: 12px 0;
-        }
-        .listing small {
-            color: #667085;
-        }
-        .sell-section {
-            background: #111827;
-            color: white;
-            text-align: center;
-        }
-        .sell-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        .sell-section p {
-            color: #cbd5e1;
-            max-width: 650px;
-            margin: 0 auto 30px;
-        }
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        .step {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #e5e7eb;
-        }
-        .step-number {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: #f4b942;
-            color: #111827;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-bottom: 18px;
-        }
-        .step h3 {
-            margin-bottom: 10px;
-        }
-        .step p {
-            color: #667085;
-        }
-        footer {
-            background: #0b1120;
-            color: #94a3b8;
-            padding: 35px 6%;
-            text-align: center;
-        }
-        footer strong {
-            color: white;
-        }
-        @media (max-width: 800px) {
-            nav {
-                display: none;
-            }
-            .hero-inner {
-                grid-template-columns: 1fr;
-            }
-            .categories {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .listings {
-                grid-template-columns: 1fr;
-            }
-            .steps {
-                grid-template-columns: 1fr;
-            }
-            .hero {
-                padding: 65px 6%;
-            }
-        }
-        @media (max-width: 500px) {
-            .categories {
-                grid-template-columns: 1fr;
-            }
-            .search-box form {
-                flex-direction: column;
-                gap: 8px;
-            }
-            .search-box button {
-                padding: 14px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TradeNest - Buy, sell and discover items locally.">
+<title>TradeNest Marketplace</title>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    color: #172033;
+    line-height: 1.6;
+}
+header {
+    background: #132238;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+.logo span {
+    color: #42d392;
+}
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+nav a:hover {
+    color: #42d392;
+}
+.sell-nav {
+    background: #42d392;
+    color: #102019 !important;
+    padding: 9px 16px;
+    border-radius: 8px;
+}
+.hero {
+    background: linear-gradient(135deg, #132238, #203b5c);
+    color: white;
+    padding: 65px 20px;
+    text-align: center;
+}
+.hero h1 {
+    font-size: clamp(36px, 7vw, 58px);
+    margin-bottom: 12px;
+}
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 28px;
+    font-size: 18px;
+    color: #dce7f2;
+}
+.search-box {
+    max-width: 760px;
+    margin: auto;
+    display: flex;
+    background: white;
+    padding: 6px;
+    border-radius: 12px;
+}
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+.search-box button {
+    border: none;
+    background: #42d392;
+    padding: 0 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 20px;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 28px;
+}
+.section-title h2 {
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 45px;
+}
+.category {
+    background: white;
+    border: 1px solid #e2e7ed;
+    padding: 18px 10px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.category:hover,
+.category.active {
+    background: #132238;
+    color: white;
+    transform: translateY(-2px);
+}
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+    align-items: center;
+}
+.controls select {
+    padding: 11px 14px;
+    border: 1px solid #d5dce4;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+}
+.results {
+    margin-left: auto;
+    font-weight: bold;
+    color: #667085;
+}
+.listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+}
+.card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(20,35,55,0.08);
+    border: 1px solid #e7ebef;
+    transition: 0.2s;
+    position: relative;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(20,35,55,0.13);
+}
+.card-image {
+    height: 175px;
+    background: linear-gradient(135deg, #dce7f2, #edf2f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+}
+.card-content {
+    padding: 18px;
+}
+.card h3 {
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+.price {
+    font-size: 22px;
+    font-weight: 800;
+    color: #132238;
+    margin: 8px 0;
+}
+.details {
+    color: #667085;
+    font-size: 14px;
+}
+.card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+.btn {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-primary {
+    background: #132238;
+    color: white;
+}
+.btn-primary:hover {
+    background: #203b5c;
+}
+.btn-secondary {
+    background: #eef2f5;
+    color: #172033;
+}
+.favorite {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    font-size: 19px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.favorite.saved {
+    color: #e63946;
+}
+.no-results {
+    text-align: center;
+    padding: 50px;
+    grid-column: 1 / -1;
+    color: #667085;
+}
+.sell-section {
+    background: white;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 4px 18px rgba(20,35,55,0.07);
+    margin-top: 45px;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group.full {
+    grid-column: 1 / -1;
+}
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    border: 1px solid #d5dce4;
+    border-radius: 8px;
+    padding: 12px;
+    font: inherit;
+}
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.submit-btn {
+    background: #42d392;
+    color: #102019;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 18px;
+}
+.info-section {
+    background: #eaf5f0;
+    padding: 45px 20px;
+    text-align: center;
+}
+.info-grid {
+    max-width: 1000px;
+    margin: 25px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+}
+.info-card .icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+footer {
+    background: #132238;
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+}
+footer p {
+    color: #cbd5df;
+    margin: 5px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 2000;
+    padding: 20px;
+    overflow-y: auto;
+}
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 650px;
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+}
+.close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+.modal-image {
+    height: 220px;
+    background: #edf2f6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+.contact-btn {
+    width: 100%;
+    background: #42d392;
+    color: #102019;
+    border: none;
+    padding: 13px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 18px;
+}
+.message {
+    display: none;
+    background: #e6f7ed;
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 15px;
+    color: #155b38;
+    font-weight: bold;
+}
+@media (max-width: 700px) {
+    .navbar {
+        flex-direction: column;
+    }
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .search-box {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .search-box button {
+        padding: 13px;
+    }
+    .form-grid,
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    .sell-section {
+        padding: 25px 18px;
+    }
+    .results {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+</style>
 </head>
 <body>
 <header>
-    <div class="nav">
+    <div class="navbar">
         <div class="logo">Trade<span>Nest</span></div>
-        <nav>
-            <a href="#browse">Browse</a>
-            <a href="#categories">Categories</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#sell">Sell Something</a>
-        </nav>
-    </div>
+    <nav>
+        <a href="#listings">Browse</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#sell" class="sell-nav">Sell Something</a>
+    </nav>
+</div>
 </header>
 <section class="hero">
-    <div class="hero-inner">
-        <div>
-            <h1>Buy smart.<br><span>Sell better.</span></h1>
-            <p>
-                Discover great finds, sell things you no longer need,
-                and connect with buyers and sellers through TradeNest.
-            </p>
-            <div class="buttons">
-                <a href="#browse" class="btn btn-primary">Browse Items</a>
-                <a href="#sell" class="btn btn-secondary">Start Selling</a>
-            </div>
-        </div>
-        <div class="market-card">
-            <h3>What's happening on TradeNest</h3>
-            <div class="market-item">
-                <span>🔥 Popular finds</span>
-                <span>New</span>
-            </div>
-            <div class="market-item">
-                <span>♻️ Pre-owned items</span>
-                <span>Browse</span>
-            </div>
-            <div class="market-item">
-                <span>⭐ Unique finds</span>
-                <span>Explore</span>
-            </div>
-            <div class="market-item">
-                <span>💷 Seller listings</span>
-                <span>View</span>
-            </div>
-        </div>
-    </div>
+    <h1>Buy. Sell. Discover.</h1>
+    <p>A simple marketplace for finding great items and giving unwanted things a new home.</p>
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search for items...">
+    <button onclick="searchListings()">Search</button>
+</div>
 </section>
-<section id="browse">
-    <div class="container">
-        <div class="search-box">
-            <form onsubmit="searchItems(event)">
-                <input id="searchInput" type="text" placeholder="What are you looking for?">
-                <button type="submit">Search</button>
-            </form>
-        </div>
-        <div class="section-heading">
-            <h2>Browse Marketplace</h2>
-            <p>
-                Explore a range of everyday items, useful products,
-                hobbies, technology and much more.
-            </p>
-        </div>
-        <div class="listings">
-            <div class="listing">
-                <div class="listing-image">🎧</div>
-                <div class="listing-content">
-                    <h3>Wireless Headphones</h3>
-                    <p>Quality pre-owned headphones in excellent condition.</p>
-                    <div class="price">£75</div>
-                    <small>Example listing</small>
-                </div>
-            </div>
-            <div class="listing">
-                <div class="listing-image">⌚</div>
-                <div class="listing-content">
-                    <h3>Classic Watch</h3>
-                    <p>A stylish everyday watch ready for a new owner.</p>
-                    <div class="price">£120</div>
-                    <small>Example listing</small>
-                </div>
-            </div>
-            <div class="listing">
-                <div class="listing-image">🎮</div>
-                <div class="listing-content">
-                    <h3>Games Console</h3>
-                    <p>Console bundle with controller and accessories.</p>
-                    <div class="price">£180</div>
-                    <small>Example listing</small>
-                </div>
-            </div>
-        </div>
+<main class="container">
+<div class="section-title">
+    <h2>Browse Categories</h2>
+    <p>Find what you're looking for.</p>
+</div>
+<div class="categories">
+    <div class="category active" onclick="filterCategory('All', this)">🏠 All</div>
+    <div class="category" onclick="filterCategory('Technology', this)">💻 Technology</div>
+    <div class="category" onclick="filterCategory('Clothing', this)">👕 Clothing</div>
+    <div class="category" onclick="filterCategory('Home', this)">🏡 Home</div>
+    <div class="category" onclick="filterCategory('Games', this)">🎮 Games</div>
+    <div class="category" onclick="filterCategory('Books', this)">📚 Books</div>
+    <div class="category" onclick="filterCategory('Tools', this)">🔧 Tools</div>
+    <div class="category" onclick="filterCategory('Motoring', this)">🚗 Motoring</div>
+</div>
+<section id="listings">
+    <div class="section-title">
+        <h2>Featured Listings</h2>
+        <p>Explore some of the latest items on TradeNest.</p>
     </div>
-</section>
-<section id="categories">
-    <div class="container">
-        <div class="section-heading">
-            <h2>Explore Categories</h2>
-            <p>Find what you're looking for quickly.</p>
-        </div>
-        <div class="categories">
-            <div class="category">
-                <div class="icon">💻</div>
-                <h3>Technology</h3>
-            </div>
-            <div class="category">
-                <div class="icon">👕</div>
-                <h3>Clothing</h3>
-            </div>
-            <div class="category">
-                <div class="icon">🏠</div>
-                <h3>Home</h3>
-            </div>
-            <div class="category">
-                <div class="icon">🎮</div>
-                <h3>Games & Hobbies</h3>
-            </div>
-            <div class="category">
-                <div class="icon">🚗</div>
-                <h3>Motoring</h3>
-            </div>
-            <div class="category">
-                <div class="icon">📚</div>
-                <h3>Books & Media</h3>
-            </div>
-            <div class="category">
-                <div class="icon">🔧</div>
-                <h3>Tools</h3>
-            </div>
-            <div class="category">
-                <div class="icon">📦</div>
-                <h3>Other</h3>
-            </div>
-        </div>
+    <div class="controls">
+        <select id="conditionFilter" onchange="applyFilters()">
+            <option value="All">All Conditions</option>
+            <option value="New">New</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Used">Used</option>
+        </select>
+        <select id="sortFilter" onchange="applyFilters()">
+            <option value="featured">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+        </select>
+        <div class="results" id="resultsCount"></div>
     </div>
+    <div class="listings" id="listingGrid"></div>
 </section>
 <section id="sell" class="sell-section">
-    <div class="container">
-        <h2>Got something to sell?</h2>
-        <p>
-            Turn unwanted items into extra money.
-            TradeNest makes it simple to showcase what you have
-            and connect with potential buyers.
-        </p>
-        <a href="#contact" class="btn btn-primary">Start Selling</a>
+    <div class="section-title">
+        <h2>Sell Something</h2>
+        <p>Create a listing and let other people discover your item.</p>
     </div>
+    <form id="sellForm">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="itemTitle">Item title</label>
+                <input id="itemTitle" required placeholder="e.g. Samsung Galaxy Phone">
+            </div>
+            <div class="form-group">
+                <label for="itemPrice">Price (£)</label>
+                <input id="itemPrice" type="number" min="0" step="0.01" required placeholder="100">
+            </div>
+            <div class="form-group">
+                <label for="itemCategory">Category</label>
+                <select id="itemCategory" required>
+                    <option value="">Select category</option>
+                    <option>Technology</option>
+                    <option>Clothing</option>
+                    <option>Home</option>
+                    <option>Games</option>
+                    <option>Books</option>
+                    <option>Tools</option>
+                    <option>Motoring</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="itemCondition">Condition</label>
+                <select id="itemCondition" required>
+                    <option value="">Select condition</option>
+                    <option>New</option>
+                    <option>Excellent</option>
+                    <option>Good</option>
+                    <option>Used</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="itemLocation">Location</label>
+                <input id="itemLocation" placeholder="e.g. London">
+            </div>
+            <div class="form-group">
+                <label for="sellerEmail">Your email</label>
+                <input id="sellerEmail" type="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group full">
+                <label for="itemDescription">Description</label>
+                <textarea id="itemDescription" required placeholder="Tell buyers about your item..."></textarea>
+            </div>
+        </div>
+        <button type="submit" class="submit-btn">Create Listing</button>
+        <div class="message" id="sellMessage">
+            Your listing has been prepared successfully. TradeNest is currently a demonstration marketplace, so listings are not permanently published yet.
+        </div>
+    </form>
 </section>
-<section id="how-it-works">
-    <div class="container">
-        <div class="section-heading">
-            <h2>How It Works</h2>
-            <p>A simple way to buy and sell.</p>
-        </div>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Find an Item</h3>
-                <p>
-                    Browse categories or search for something
-                    you're interested in buying.
-                </p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Connect</h3>
-                <p>
-                    View the listing and connect with the seller
-                    to discuss the item.
-                </p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Buy or Sell</h3>
-                <p>
-                    Arrange the transaction and give useful items
-                    a new home.
-                </p>
-            </div>
-        </div>
+</main>
+<section id="how-it-works" class="info-section">
+    <div class="section-title">
+        <h2>How TradeNest Works</h2>
+        <p>Simple buying and selling.</p>
     </div>
-</section>
-<section id="contact" style="background:#eef2f7; text-align:center;">
-    <div class="container">
-        <div class="section-heading">
-            <h2>TradeNest</h2>
-            <p>
-                A modern marketplace concept for buying,
-                selling and discovering great items.
-            </p>
-        </div>
+<div class="info-grid">
+    <div class="info-card">
+        <div class="icon">🔎</div>
+        <h3>1. Find an Item</h3>
+        <p>Search listings or browse by category to find something you like.</p>
     </div>
+    <div class="info-card">
+        <div class="icon">💬</div>
+        <h3>2. Contact the Seller</h3>
+        <p>Ask questions and arrange the details directly with the seller.</p>
+    </div>
+    <div class="info-card">
+        <div class="icon">🤝</div>
+        <h3>3. Complete the Deal</h3>
+        <p>Agree the collection, delivery and payment arrangements between yourselves.</p>
+    </div>
+</div>
 </section>
 <footer>
-    <p>
-        © 2026 <strong>TradeNest</strong>. All rights reserved.
-    </p>
-    <p style="margin-top:8px; font-size:0.85rem;">
-        TradeNest is currently a website concept and does not process
-        payments or transactions.
-    </p>
+    <h2>TradeNest</h2>
+    <p>Buy • Sell • Discover</p>
+    <p>© 2026 TradeNest. Marketplace concept.</p>
+    <p>TradeNest does not currently process payments or transactions.</p>
 </footer>
+<div class="modal" id="listingModal">
+    <div class="modal-content">
+        <button class="close" onclick="closeModal()">×</button>
+    <div class="modal-image" id="modalImage">📦</div>
+    <h2 id="modalTitle"></h2>
+    <div class="price" id="modalPrice"></div>
+    <p id="modalDetails" class="details"></p>
+    <br>
+    <p id="modalDescription"></p>
+    <button class="contact-btn" onclick="contactSeller()">Contact Seller</button>
+</div>
+</div>
 <script>
-    function searchItems(event) {
-        event.preventDefault();
-        const search = document.getElementById("searchInput").value.trim();
-        if (search === "") {
-            alert("Please enter something to search for.");
-            return;
-        }
-        alert("You searched for: " + search);
+const listings = [
+    {
+        id: 1,
+        title: "Wireless Headphones",
+        price: 75,
+        category: "Technology",
+        condition: "Excellent",
+        location: "London",
+        icon: "🎧",
+        description: "Quality wireless headphones in excellent condition with good battery life."
+    },
+    {
+        id: 2,
+        title: "Gaming Console",
+        price: 220,
+        category: "Games",
+        condition: "Good",
+        location: "London",
+        icon: "🎮",
+        description: "Pre-owned gaming console in good working condition."
+    },
+    {
+        id: 3,
+        title: "Vintage Coffee Table",
+        price: 90,
+        category: "Home",
+        condition: "Good",
+        location: "Manchester",
+        icon: "🪑",
+        description: "Characterful vintage coffee table suitable for a living room."
+    },
+    {
+        id: 4,
+        title: "Men's Jacket",
+        price: 45,
+        category: "Clothing",
+        condition: "Excellent",
+        location: "Bristol",
+        icon: "🧥",
+        description: "Smart men's jacket in excellent condition."
+    },
+    {
+        id: 5,
+        title: "Finance Textbook",
+        price: 25,
+        category: "Books",
+        condition: "Good",
+        location: "Birmingham",
+        icon: "📚",
+        description: "Useful finance textbook in good condition."
+    },
+    {
+        id: 6,
+        title: "Cordless Drill",
+        price: 60,
+        category: "Tools",
+        condition: "Good",
+        location: "Leeds",
+        icon: "🔧",
+        description: "Cordless drill suitable for general DIY projects."
+    },
+    {
+        id: 7,
+        title: "Car Roof Bars",
+        price: 85,
+        category: "Motoring",
+        condition: "Used",
+        location: "Gloucester",
+        icon: "🚗",
+        description: "Used roof bars suitable for a range of vehicles."
+    },
+    {
+        id: 8,
+        title: "Smartphone",
+        price: 180,
+        category: "Technology",
+        condition: "Good",
+        location: "London",
+        icon: "📱",
+        description: "Good working smartphone with normal signs of use."
     }
+];
+let currentCategory = "All";
+let currentSearch = "";
+function renderListings(data) {
+    const grid = document.getElementById("listingGrid");
+    const count = document.getElementById("resultsCount");
+    grid.innerHTML = "";
+    if (data.length === 0) {
+        grid.innerHTML = `
+            <div class="no-results">
+                <h3>No listings found</h3>
+                <p>Try another search or category.</p>
+            </div>
+        `;
+        count.textContent = "0 listings";
+        return;
+    }
+    count.textContent = `${data.length} listing${data.length === 1 ? "" : "s"}`;
+    data.forEach(item => {
+        const saved = localStorage.getItem("favorite-" + item.id) === "true";
+        grid.innerHTML += `
+            <article class="card">
+                <button class="favorite ${saved ? "saved" : ""}"
+                    onclick="toggleFavorite(${item.id}, this)">
+                    ${saved ? "♥" : "♡"}
+                </button>
+                <div class="card-image">${item.icon}</div>
+                <div class="card-content">
+                    <h3>${item.title}</h3>
+                    <div class="price">£${item.price.toFixed(2)}</div>
+                    <div class="details">
+                        ${item.condition} • ${item.category}<br>
+                        📍 ${item.location}
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary"
+                            onclick="viewListing(${item.id})">
+                            View Listing
+                        </button>
+                        <button class="btn btn-secondary"
+                            onclick="contactSeller('${item.title.replace(/'/g, "\\'")}')">
+                            Contact
+                        </button>
+                    </div>
+                </div>
+            </article>
+        `;
+    });
+}
+function applyFilters() {
+    const condition = document.getElementById("conditionFilter").value;
+    const sort = document.getElementById("sortFilter").value;
+    let filtered = listings.filter(item => {
+        const matchesCategory =
+            currentCategory === "All" ||
+            item.category === currentCategory;
+        const matchesCondition =
+            condition === "All" ||
+            item.condition === condition;
+        const searchText =
+            `${item.title} ${item.category} ${item.description} ${item.location}`
+            .toLowerCase();
+        const matchesSearch =
+            currentSearch === "" ||
+            searchText.includes(currentSearch.toLowerCase());
+        return matchesCategory && matchesCondition && matchesSearch;
+    });
+    if (sort === "low") {
+        filtered.sort((a,b) => a.price - b.price);
+    }
+    if (sort === "high") {
+        filtered.sort((a,b) => b.price - a.price);
+    }
+    renderListings(filtered);
+}
+function filterCategory(category, element) {
+    currentCategory = category;
+    document.querySelectorAll(".category")
+        .forEach(cat => cat.classList.remove("active"));
+    element.classList.add("active");
+    applyFilters();
+    document.getElementById("listings")
+        .scrollIntoView({ behavior: "smooth" });
+}
+function searchListings() {
+    currentSearch =
+        document.getElementById("searchInput").value.trim();
+    applyFilters();
+    document.getElementById("listings")
+        .scrollIntoView({ behavior: "smooth" });
+}
+document.getElementById("searchInput")
+    .addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            searchListings();
+        }
+    });
+function viewListing(id) {
+    const item = listings.find(listing => listing.id === id);
+    if (!item) return;
+    document.getElementById("modalImage").textContent = item.icon;
+    document.getElementById("modalTitle").textContent = item.title;
+    document.getElementById("modalPrice").textContent =
+        `£${item.price.toFixed(2)}`;
+    document.getElementById("modalDetails").textContent =
+        `${item.condition} • ${item.category} • 📍 ${item.location}`;
+    document.getElementById("modalDescription").textContent =
+        item.description;
+    document.getElementById("listingModal")
+        .classList.add("show");
+}
+function closeModal() {
+    document.getElementById("listingModal")
+        .classList.remove("show");
+}
+function contactSeller(title = "this item") {
+    const subject =
+        encodeURIComponent(`TradeNest enquiry: ${title}`);
+    const body =
+        encodeURIComponent(
+            `Hello,\n\nI'm interested in your TradeNest listing: ${title}.\n\nPlease let me know if it is still available.\n\nThanks.`
+        );
+    window.location.href =
+        `mailto:?subject=${subject}&body=${body}`;
+}
+function toggleFavorite(id, button) {
+    const key = "favorite-" + id;
+    const saved = localStorage.getItem(key) === "true";
+    localStorage.setItem(key, saved ? "false" : "true");
+    button.classList.toggle("saved", !saved);
+    button.textContent = saved ? "♡" : "♥";
+}
+document.getElementById("sellForm")
+    .addEventListener("submit", function(event) {
+        event.preventDefault();
+        document.getElementById("sellMessage")
+            .style.display = "block";
+        this.reset();
+        document.getElementById("sellMessage")
+            .scrollIntoView({ behavior: "smooth" });
+    });
+document.getElementById("listingModal")
+    .addEventListener("click", function(event) {
+        if (event.target === this) {
+            closeModal();
+        }
+    });
+renderListings(listings);
 </script>
 </body>
 </html>
