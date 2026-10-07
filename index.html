@@ -1,729 +1,243 @@
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="navbar">
-
-    <div class="logo">
-        Trade<span>Nest</span>
-    </div>
-
-    <nav>
-        <a href="#listings">Browse</a>
-        <a href="#businesses">Businesses</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#sell" class="sell-nav">Sell Something</a>
-        <a href="#account" class="nav-button">Login / Join</a>
-    </nav>
-
-</div>
-
-
-
-
-
-
-
-<div class="hero-badge">
-    🇬🇧 Starting in London
-</div>
-
-<h1>
-    Buy. Sell. <span>Discover.</span>
-</h1>
-
-<p>
-    TradeNest is a new marketplace for people and businesses
-    to buy and sell locally, starting in London.
-</p>
-
-<div class="search-box">
-
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="What are you looking for?">
-
-    <button onclick="searchListings()">
-        Search
-    </button>
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="section-title">
-
-    <h2>Browse Categories</h2>
-
-    <p>
-        Find items from private sellers and businesses.
-    </p>
-
-</div>
-
-<div class="categories">
-
-    <div class="category active"
-         onclick="filterCategory('All', this)">
-        🏠 All
-    </div>
-
-    <div class="category"
-         onclick="filterCategory('Technology', this)">
-        💻 Technology
-    </div>
-
-    <div class="category"
-         onclick="filterCategory('Clothing', this)">
-        👕 Clothing
-    </div>
-
-    <div class="category"
-         onclick="filterCategory('Home', this)">
-        🏡 Home
-    </div>
-
-    <div class="category"
-         onclick="filterCategory('Games', this)">
-        🎮 Games
-    </div>
-
-    <div class="category"
-         onclick="filterCategory('Books', this)">
-        📚 Books
-    </div>
-
-    <div class="category"
-         onclick="filterCategory('Tools', this)">
-        🔧 Tools
-    </div>
-
-    <div class="category"
-         onclick="filterCategory('Motoring', this)">
-        🚗 Motoring
-    </div>
-
-</div>
-
-
-
-
-
-
-
-
-<div class="section-title">
-
-    <h2>Featured Listings</h2>
-
-    <p>
-        Explore items currently available on TradeNest.
-    </p>
-
-</div>
-
-<div class="controls">
-
-    <select id="conditionFilter"
-            onchange="applyFilters()">
-
-        <option value="All">
-            All Conditions
-        </option>
-
-        <option value="New">
-            New
-        </option>
-
-        <option value="Excellent">
-            Excellent
-        </option>
-
-        <option value="Good">
-            Good
-        </option>
-
-        <option value="Used">
-            Used
-        </option>
-
-    </select>
-
-    <select id="sortFilter"
-            onchange="applyFilters()">
-
-        <option value="featured">
-            Featured
-        </option>
-
-        <option value="low">
-            Price: Low to High
-        </option>
-
-        <option value="high">
-            Price: High to Low
-        </option>
-
-    </select>
-
-    <div class="results"
-         id="resultsCount">
-    </div>
-
-</div>
-
-<div class="listings"
-     id="listingGrid">
-</div>
-
-
-
-
-
-
-
-
-<div class="business-grid">
-
-    <div>
-
-        <h2>
-            Are you a business?
-        </h2>
-
-        <p>
-            TradeNest isn't just for private sellers.
-            Businesses can create a presence on the marketplace
-            and reach local customers.
-        </p>
-
-        <ul class="business-list">
-
-            <li>✓ Business seller profile</li>
-
-            <li>✓ Multiple product listings</li>
-
-            <li>✓ Professional shop presence</li>
-
-            <li>✓ Manage your listings</li>
-
-            <li>✓ Reach London buyers</li>
-
-        </ul>
-
-        <a href="#pricing"
-           class="business-button">
-            View Business Options
-        </a>
-
-    </div>
-
-    <div class="business-box">
-
-        <div class="icon">
-            🏪
-        </div>
-
-        <h3>
-            Build your TradeNest shop
-        </h3>
-
-        <p>
-            Coming as part of our business membership.
-        </p>
-
-    </div>
-
-</div>
-
-
-
-
-
-
-
-
-<div class="section-title">
-
-    <h2>
-        Simple TradeNest Membership
-    </h2>
-
-    <p>
-        Start free. Upgrade when you need more.
-    </p>
-
-</div>
-
-<div class="pricing-grid">
-
-    <div class="pricing-card">
-
-        <h3>
-            Free
-        </h3>
-
-        <p>
-            For occasional sellers and buyers.
-        </p>
-
-        <div class="pricing-price">
-            £0
-            <span>forever</span>
-        </div>
-
-        <ul class="pricing-features">
-
-            <li>✓ Browse listings</li>
-
-            <li>✓ Contact sellers</li>
-
-            <li>✓ Create limited listings</li>
-
-            <li>✓ Save favourites</li>
-
-        </ul>
-
-        <button class="pricing-button free-button"
-                onclick="openAccount()">
-            Create Free Account
-        </button>
-
-    </div>
-
-
-    <div class="pricing-card featured">
-
-        <div class="pricing-badge">
-            TRADEST NEST PLUS
-        </div>
-
-        <h3>
-            TradeNest Plus
-        </h3>
-
-        <p>
-            For regular sellers and businesses.
-        </p>
-
-        <div class="pricing-price">
-            £4.99
-            <span>/ month</span>
-        </div>
-
-        <ul class="pricing-features">
-
-            <li>✓ More listings</li>
-
-            <li>✓ More photographs</li>
-
-            <li>✓ Seller profile</li>
-
-            <li>✓ Featured listing opportunities</li>
-
-            <li>✓ Priority marketplace tools</li>
-
-        </ul>
-
-        <button class="pricing-button plus-button"
-                onclick="openSubscription()">
-            Join TradeNest Plus
-        </button>
-
-    </div>
-
-</div>
-
-
-
-
-
-
-
-
-<div class="section-title">
-
-    <h2>
-        Sell on TradeNest
-    </h2>
-
-    <p>
-        Create your listing and reach local buyers.
-    </p>
-
-</div>
-
-<form id="sellForm">
-
-    <div class="form-grid">
-
-        <div class="form-group">
-
-            <label>
-                Seller type
-            </label>
-
-            <select required>
-
-                <option value="">
-                    Select seller type
-                </option>
-
-                <option>
-                    Private seller
-                </option>
-
-                <option>
-                    Business
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Item title
-            </label>
-
-            <input
-                required
-                placeholder="e.g. Samsung Galaxy Phone">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Price (£)
-            </label>
-
-            <input
-                type="number"
-                min="0"
-                step="0.01"
-                required
-                placeholder="100">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Category
-            </label>
-
-            <select required>
-
-                <option value="">
-                    Select category
-                </option>
-
-                <option>Technology</option>
-                <option>Clothing</option>
-                <option>Home</option>
-                <option>Games</option>
-                <option>Books</option>
-                <option>Tools</option>
-                <option>Motoring</option>
-
-            </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Condition
-            </label>
-
-            <select required>
-
-                <option value="">
-                    Select condition
-                </option>
-
-                <option>New</option>
-                <option>Excellent</option>
-                <option>Good</option>
-                <option>Used</option>
-
-            </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Location
-            </label>
-
-            <input
-                required
-                placeholder="e.g. Westminster">
-
-        </div>
-
-
-        <div class="form-group full">
-
-            <label>
-                Description
-            </label>
-
-            <textarea
-                required
-                placeholder="Tell buyers about your item...">
-            </textarea>
-
-        </div>
-
-
-        <div class="form-group full">
-
-            <label>
-                Photos
-            </label>
-
-            <input
-                type="file"
-                accept="image/*"
-                multiple>
-
-            <small>
-                Photo storage will be connected to the TradeNest
-                backend in the next stage.
-            </small>
-
-        </div>
-
-    </div>
-
-    <button
-        type="button"
-        class="submit-btn"
-        onclick="openAccount()">
-
-        Create an account to list your item
-
-    </button>
-
-</form>
-
-
-
-
-
-
-
-
-
-<div class="section-title">
-
-    <h2>
-        How TradeNest Works
-    </h2>
-
-    <p>
-        Simple local buying and selling.
-    </p>
-
-</div>
-
-<div class="info-grid">
-
-    <div class="info-card">
-
-        <div class="icon">
-            🔎
-        </div>
-
-        <h3>
-            1. Find an Item
-        </h3>
-
-        <p>
-            Search TradeNest or browse categories.
-        </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-        <div class="icon">
-            👤
-        </div>
-
-        <h3>
-            2. Connect
-        </h3>
-
-        <p>
-            Contact the seller and ask questions.
-        </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-        <div class="icon">
-            🤝
-        </div>
-
-        <h3>
-            3. Complete the Deal
-        </h3>
-
-        <p>
-            Arrange the details directly with the seller.
-        </p>
-
-    </div>
-
-</div>
-
-
-
-
-
-
-
-<h2>
-    TradeNest
-</h2>
-
-<p>
-    Buy • Sell • Discover
-</p>
-
-<div class="footer-links">
-
-    <a href="#listings">
-        Browse
-    </a>
-
-    <a href="#sell">
-        Sell
-    </a>
-
-    <a href="#businesses">
-        Businesses
-    </a>
-
-    <a href="#pricing">
-        Pricing
-    </a>
-
-</div>
-
-<p>
-    © 2026 TradeNest.
-</p>
-
-<p>
-    TradeNest is currently developing its marketplace platform.
-</p>
-
-
-
-
-
-
-
-<div class="modal-content">
-
-    <button class="close"
-            onclick="closeModal('accountModal')">
-        ×
-    </button>
-
-    <h2>
-        Join TradeNest
-    </h2>
-
-    <p>
-        Account registration is the next part of the TradeNest
-        platform. We're building the secure account system now.
-    </p>
-
-    <button class="modal-button"
-            onclick="closeModal('accountModal')">
-
-        Continue
-
-    </button>
-
-</div>
-
-
-
-
-
-
-
-
-<div class="modal-content">
-
-    <button class="close"
-            onclick="closeModal('subscriptionModal')">
-        ×
-    </button>
-
-    <h2>
-        TradeNest Plus
-    </h2>
-
-    <p>
-        TradeNest Plus will give regular sellers and businesses
-        additional marketplace features for £4.99 per month.
-    </p>
-
-    <br>
-
-    <p>
-        <strong>
-            Payment will be connected through Stripe in the next
-            development stage.
-        </strong>
-    </p>
-
-    <button class="modal-button"
-            onclick="closeModal('subscriptionModal')">
-
-        Coming Soon
-
-    </button>
-
-</div>
-
-
-
-
-
-
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="TradeNest - Buy, sell and discover great deals from people and businesses across London.">
+
+<title>TradeNest | Buy. Sell. Discover.</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --dark: #111827;
+    --text: #374151;
+    --muted: #6b7280;
+    --light: #f8fafc;
+    --border: #e5e7eb;
+    --white: #ffffff;
+    --green: #16a34a;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8fafc;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--dark);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background:
+        radial-gradient(circle at top right, rgba(37,99,235,0.16), transparent 35%),
+        linear-gradient(135deg, #eff6ff, #ffffff);
+    padding: 80px 20px 70px;
+}
+
+.hero-container {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 7px 14px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    max-width: 680px;
+    margin: 0 auto 32px;
+    font-size: 19px;
+    color: var(--muted);
+}
+
+.search-box {
+    max-width: 850px;
+    margin: auto;
+    background: white;
+    padding: 10px;
+    border-radius: 14px;
+    box-shadow: 0 15px 45px rgba(15,23,42,0.12);
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input,
+.search-box select {
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+    background: transparent;
+}
+
+.search-box input {
+    flex: 1;
+}
+
+.search-box select {
+    border-left: 1px solid var(--border);
+}
+
+.search-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 0 25px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.hero-actions {
+    margin-top: 25px;
+}
+
+.hero-actions a {
+    margin: 5px;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    color: var(--dark);
+}
+
+.section-header p {
+    color: var(--muted);
+    margin-top: 5
