@@ -5,18 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="TradeNest - Buy, sell and discover items locally.">
 <title>TradeNest Marketplace</title>
+
 <style>
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f5f7fa;
     color: #172033;
     line-height: 1.6;
 }
+
 header {
     background: #132238;
     color: white;
@@ -25,6 +28,7 @@ header {
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
+
 .navbar {
     max-width: 1200px;
     margin: auto;
@@ -34,49 +38,59 @@ header {
     justify-content: space-between;
     gap: 20px;
 }
+
 .logo {
     font-size: 28px;
     font-weight: 800;
     letter-spacing: -1px;
 }
+
 .logo span {
     color: #42d392;
 }
+
 nav {
     display: flex;
     gap: 20px;
     align-items: center;
 }
+
 nav a {
     color: white;
     text-decoration: none;
     font-weight: 600;
 }
+
 nav a:hover {
     color: #42d392;
 }
+
 .sell-nav {
     background: #42d392;
     color: #102019 !important;
     padding: 9px 16px;
     border-radius: 8px;
 }
+
 .hero {
     background: linear-gradient(135deg, #132238, #203b5c);
     color: white;
     padding: 65px 20px;
     text-align: center;
 }
+
 .hero h1 {
     font-size: clamp(36px, 7vw, 58px);
     margin-bottom: 12px;
 }
+
 .hero p {
     max-width: 700px;
     margin: 0 auto 28px;
     font-size: 18px;
     color: #dce7f2;
 }
+
 .search-box {
     max-width: 760px;
     margin: auto;
@@ -85,6 +99,7 @@ nav a:hover {
     padding: 6px;
     border-radius: 12px;
 }
+
 .search-box input {
     flex: 1;
     border: none;
@@ -93,6 +108,7 @@ nav a:hover {
     font-size: 16px;
     border-radius: 8px;
 }
+
 .search-box button {
     border: none;
     background: #42d392;
@@ -101,25 +117,30 @@ nav a:hover {
     font-weight: bold;
     cursor: pointer;
 }
+
 .container {
     max-width: 1200px;
     margin: auto;
     padding: 45px 20px;
 }
+
 .section-title {
     text-align: center;
     margin-bottom: 28px;
 }
+
 .section-title h2 {
     font-size: 32px;
     margin-bottom: 6px;
 }
+
 .categories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 12px;
     margin-bottom: 45px;
 }
+
 .category {
     background: white;
     border: 1px solid #e2e7ed;
@@ -130,12 +151,14 @@ nav a:hover {
     font-weight: bold;
     transition: 0.2s;
 }
+
 .category:hover,
 .category.active {
     background: #132238;
     color: white;
     transform: translateY(-2px);
 }
+
 .controls {
     display: flex;
     flex-wrap: wrap;
@@ -143,6 +166,7 @@ nav a:hover {
     margin-bottom: 25px;
     align-items: center;
 }
+
 .controls select {
     padding: 11px 14px;
     border: 1px solid #d5dce4;
@@ -150,16 +174,19 @@ nav a:hover {
     background: white;
     font-size: 14px;
 }
+
 .results {
     margin-left: auto;
     font-weight: bold;
     color: #667085;
 }
+
 .listings {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 22px;
 }
+
 .card {
     background: white;
     border-radius: 14px;
@@ -169,10 +196,12 @@ nav a:hover {
     transition: 0.2s;
     position: relative;
 }
+
 .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(20,35,55,0.13);
 }
+
 .card-image {
     height: 175px;
     background: linear-gradient(135deg, #dce7f2, #edf2f6);
@@ -181,28 +210,34 @@ nav a:hover {
     justify-content: center;
     font-size: 55px;
 }
+
 .card-content {
     padding: 18px;
 }
+
 .card h3 {
     font-size: 19px;
     margin-bottom: 5px;
 }
+
 .price {
     font-size: 22px;
     font-weight: 800;
     color: #132238;
     margin: 8px 0;
 }
+
 .details {
     color: #667085;
     font-size: 14px;
 }
+
 .card-actions {
     display: flex;
     gap: 8px;
     margin-top: 15px;
 }
+
 .btn {
     flex: 1;
     border: none;
@@ -211,17 +246,21 @@ nav a:hover {
     cursor: pointer;
     font-weight: bold;
 }
+
 .btn-primary {
     background: #132238;
     color: white;
 }
+
 .btn-primary:hover {
     background: #203b5c;
 }
+
 .btn-secondary {
     background: #eef2f5;
     color: #172033;
 }
+
 .favorite {
     position: absolute;
     top: 12px;
@@ -235,15 +274,18 @@ nav a:hover {
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
+
 .favorite.saved {
     color: #e63946;
 }
+
 .no-results {
     text-align: center;
     padding: 50px;
     grid-column: 1 / -1;
     color: #667085;
 }
+
 .sell-section {
     background: white;
     border-radius: 16px;
@@ -251,22 +293,27 @@ nav a:hover {
     box-shadow: 0 4px 18px rgba(20,35,55,0.07);
     margin-top: 45px;
 }
+
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
 }
+
 .form-group {
     display: flex;
     flex-direction: column;
 }
+
 .form-group.full {
     grid-column: 1 / -1;
 }
+
 .form-group label {
     font-weight: bold;
     margin-bottom: 6px;
 }
+
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -275,10 +322,33 @@ nav a:hover {
     padding: 12px;
     font: inherit;
 }
+
 .form-group textarea {
     min-height: 120px;
     resize: vertical;
 }
+
+.photo-help {
+    font-size: 13px;
+    color: #667085;
+    margin-top: 5px;
+}
+
+.photo-preview {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.photo-preview img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #d5dce4;
+}
+
 .submit-btn {
     background: #42d392;
     color: #102019;
@@ -289,11 +359,18 @@ nav a:hover {
     cursor: pointer;
     margin-top: 18px;
 }
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .info-section {
     background: #eaf5f0;
     padding: 45px 20px;
     text-align: center;
 }
+
 .info-grid {
     max-width: 1000px;
     margin: 25px auto 0;
@@ -301,25 +378,30 @@ nav a:hover {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
 .info-card {
     background: white;
     padding: 25px;
     border-radius: 12px;
 }
+
 .info-card .icon {
     font-size: 32px;
     margin-bottom: 10px;
 }
+
 footer {
     background: #132238;
     color: white;
     padding: 35px 20px;
     text-align: center;
 }
+
 footer p {
     color: #cbd5df;
     margin: 5px;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -329,11 +411,13 @@ footer p {
     padding: 20px;
     overflow-y: auto;
 }
+
 .modal.show {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .modal-content {
     background: white;
     width: 100%;
@@ -342,6 +426,7 @@ footer p {
     padding: 30px;
     position: relative;
 }
+
 .close {
     position: absolute;
     top: 12px;
@@ -351,6 +436,7 @@ footer p {
     font-size: 30px;
     cursor: pointer;
 }
+
 .modal-image {
     height: 220px;
     background: #edf2f6;
@@ -361,6 +447,7 @@ footer p {
     font-size: 80px;
     margin-bottom: 20px;
 }
+
 .contact-btn {
     width: 100%;
     background: #42d392;
@@ -372,37 +459,57 @@ footer p {
     cursor: pointer;
     margin-top: 18px;
 }
+
 .message {
     display: none;
-    background: #e6f7ed;
     padding: 14px;
     border-radius: 8px;
     margin-top: 15px;
-    color: #155b38;
     font-weight: bold;
 }
+
+.message.success {
+    background: #e6f7ed;
+    color: #155b38;
+}
+
+.message.error {
+    background: #fdecec;
+    color: #9b1c1c;
+}
+
 @media (max-width: 700px) {
     .navbar {
         flex-direction: column;
     }
+
     nav {
         flex-wrap: wrap;
         justify-content: center;
     }
+
     .search-box {
         flex-direction: column;
         gap: 6px;
     }
+
     .search-box button {
         padding: 13px;
     }
+
     .form-grid,
     .info-grid {
         grid-template-columns: 1fr;
     }
+
+    .photo-preview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .sell-section {
         padding: 25px 18px;
     }
+
     .results {
         width: 100%;
         margin-left: 0;
@@ -410,162 +517,307 @@ footer p {
 }
 </style>
 </head>
+
 <body>
+
 <header>
     <div class="navbar">
         <div class="logo">Trade<span>Nest</span></div>
-    <nav>
-        <a href="#listings">Browse</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#sell" class="sell-nav">Sell Something</a>
-    </nav>
-</div>
+
+        <nav>
+            <a href="#listings">Browse</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#sell" class="sell-nav">Sell Something</a>
+        </nav>
+    </div>
 </header>
+
 <section class="hero">
     <h1>Buy. Sell. Discover.</h1>
     <p>A simple marketplace for finding great items and giving unwanted things a new home.</p>
-<div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search for items...">
-    <button onclick="searchListings()">Search</button>
-</div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for items...">
+        <button onclick="searchListings()">Search</button>
+    </div>
 </section>
+
 <main class="container">
-<div class="section-title">
-    <h2>Browse Categories</h2>
-    <p>Find what you're looking for.</p>
-</div>
-<div class="categories">
-    <div class="category active" onclick="filterCategory('All', this)">🏠 All</div>
-    <div class="category" onclick="filterCategory('Technology', this)">💻 Technology</div>
-    <div class="category" onclick="filterCategory('Clothing', this)">👕 Clothing</div>
-    <div class="category" onclick="filterCategory('Home', this)">🏡 Home</div>
-    <div class="category" onclick="filterCategory('Games', this)">🎮 Games</div>
-    <div class="category" onclick="filterCategory('Books', this)">📚 Books</div>
-    <div class="category" onclick="filterCategory('Tools', this)">🔧 Tools</div>
-    <div class="category" onclick="filterCategory('Motoring', this)">🚗 Motoring</div>
-</div>
-<section id="listings">
+
     <div class="section-title">
-        <h2>Featured Listings</h2>
-        <p>Explore some of the latest items on TradeNest.</p>
+        <h2>Browse Categories</h2>
+        <p>Find what you're looking for.</p>
     </div>
-    <div class="controls">
-        <select id="conditionFilter" onchange="applyFilters()">
-            <option value="All">All Conditions</option>
-            <option value="New">New</option>
-            <option value="Excellent">Excellent</option>
-            <option value="Good">Good</option>
-            <option value="Used">Used</option>
-        </select>
-        <select id="sortFilter" onchange="applyFilters()">
-            <option value="featured">Featured</option>
-            <option value="low">Price: Low to High</option>
-            <option value="high">Price: High to Low</option>
-        </select>
-        <div class="results" id="resultsCount"></div>
+
+    <div class="categories">
+        <div class="category active" onclick="filterCategory('All', this)">🏠 All</div>
+        <div class="category" onclick="filterCategory('Technology', this)">💻 Technology</div>
+        <div class="category" onclick="filterCategory('Clothing', this)">👕 Clothing</div>
+        <div class="category" onclick="filterCategory('Home', this)">🏡 Home</div>
+        <div class="category" onclick="filterCategory('Games', this)">🎮 Games</div>
+        <div class="category" onclick="filterCategory('Books', this)">📚 Books</div>
+        <div class="category" onclick="filterCategory('Tools', this)">🔧 Tools</div>
+        <div class="category" onclick="filterCategory('Motoring', this)">🚗 Motoring</div>
     </div>
-    <div class="listings" id="listingGrid"></div>
-</section>
-<section id="sell" class="sell-section">
-    <div class="section-title">
-        <h2>Sell Something</h2>
-        <p>Create a listing and let other people discover your item.</p>
-    </div>
-    <form id="sellForm">
-        <div class="form-grid">
-            <div class="form-group">
-                <label for="itemTitle">Item title</label>
-                <input id="itemTitle" required placeholder="e.g. Samsung Galaxy Phone">
-            </div>
-            <div class="form-group">
-                <label for="itemPrice">Price (£)</label>
-                <input id="itemPrice" type="number" min="0" step="0.01" required placeholder="100">
-            </div>
-            <div class="form-group">
-                <label for="itemCategory">Category</label>
-                <select id="itemCategory" required>
-                    <option value="">Select category</option>
-                    <option>Technology</option>
-                    <option>Clothing</option>
-                    <option>Home</option>
-                    <option>Games</option>
-                    <option>Books</option>
-                    <option>Tools</option>
-                    <option>Motoring</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="itemCondition">Condition</label>
-                <select id="itemCondition" required>
-                    <option value="">Select condition</option>
-                    <option>New</option>
-                    <option>Excellent</option>
-                    <option>Good</option>
-                    <option>Used</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="itemLocation">Location</label>
-                <input id="itemLocation" placeholder="e.g. London">
-            </div>
-            <div class="form-group">
-                <label for="sellerEmail">Your email</label>
-                <input id="sellerEmail" type="email" placeholder="you@example.com">
-            </div>
-            <div class="form-group full">
-                <label for="itemDescription">Description</label>
-                <textarea id="itemDescription" required placeholder="Tell buyers about your item..."></textarea>
-            </div>
+
+    <section id="listings">
+
+        <div class="section-title">
+            <h2>Featured Listings</h2>
+            <p>Explore some of the latest items on TradeNest.</p>
         </div>
-        <button type="submit" class="submit-btn">Create Listing</button>
-        <div class="message" id="sellMessage">
-            Your listing has been prepared successfully. TradeNest is currently a demonstration marketplace, so listings are not permanently published yet.
+
+        <div class="controls">
+
+            <select id="conditionFilter" onchange="applyFilters()">
+                <option value="All">All Conditions</option>
+                <option value="New">New</option>
+                <option value="Excellent">Excellent</option>
+                <option value="Good">Good</option>
+                <option value="Used">Used</option>
+            </select>
+
+            <select id="sortFilter" onchange="applyFilters()">
+                <option value="featured">Featured</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+            </select>
+
+            <div class="results" id="resultsCount"></div>
         </div>
-    </form>
-</section>
+
+        <div class="listings" id="listingGrid"></div>
+
+    </section>
+
+    <!-- SELL FORM -->
+    <section id="sell" class="sell-section">
+
+        <div class="section-title">
+            <h2>Sell Something</h2>
+            <p>Submit your item to TradeNest for review.</p>
+        </div>
+
+        <form id="sellForm" enctype="multipart/form-data">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="sellerName">Your name *</label>
+                    <input
+                        id="sellerName"
+                        name="seller_name"
+                        required
+                        placeholder="Your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="sellerEmail">Your email *</label>
+                    <input
+                        id="sellerEmail"
+                        name="seller_email"
+                        type="email"
+                        required
+                        placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="sellerPhone">Phone number</label>
+                    <input
+                        id="sellerPhone"
+                        name="seller_phone"
+                        type="tel"
+                        placeholder="Optional">
+                </div>
+
+                <div class="form-group">
+                    <label for="itemTitle">Item title *</label>
+                    <input
+                        id="itemTitle"
+                        name="item_title"
+                        required
+                        placeholder="e.g. Samsung Galaxy Phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="itemPrice">Price (£) *</label>
+                    <input
+                        id="itemPrice"
+                        name="item_price"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        required
+                        placeholder="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="itemCategory">Category *</label>
+                    <select id="itemCategory" name="item_category" required>
+                        <option value="">Select category</option>
+                        <option>Technology</option>
+                        <option>Clothing</option>
+                        <option>Home</option>
+                        <option>Games</option>
+                        <option>Books</option>
+                        <option>Tools</option>
+                        <option>Motoring</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemCondition">Condition *</label>
+                    <select id="itemCondition" name="item_condition" required>
+                        <option value="">Select condition</option>
+                        <option>New</option>
+                        <option>Excellent</option>
+                        <option>Good</option>
+                        <option>Used</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemLocation">Location *</label>
+                    <input
+                        id="itemLocation"
+                        name="item_location"
+                        required
+                        placeholder="e.g. London">
+                </div>
+
+                <div class="form-group full">
+                    <label for="itemDescription">Description *</label>
+                    <textarea
+                        id="itemDescription"
+                        name="item_description"
+                        required
+                        placeholder="Tell buyers about your item..."></textarea>
+                </div>
+
+                <div class="form-group full">
+
+                    <label for="itemPhotos">
+                        Photos — up to 5
+                    </label>
+
+                    <input
+                        id="itemPhotos"
+                        name="fi-file-photos[]"
+                        type="file"
+                        accept="image/*"
+                        multiple>
+
+                    <div class="photo-help">
+                        You can select up to 5 photos. Please keep the total upload size within Forminit's limit.
+                    </div>
+
+                    <div id="photoPreview" class="photo-preview"></div>
+
+                </div>
+
+                <div class="form-group full">
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="sellerConfirmation"
+                            name="seller_confirmation"
+                            value="Confirmed"
+                            required>
+
+                        I confirm that the information I have provided is accurate and that I am entitled to sell this item. *
+                    </label>
+
+                </div>
+
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitButton">
+                Submit Listing for Review
+            </button>
+
+            <div class="message success" id="successMessage">
+                Thank you! Your listing has been submitted successfully and is now awaiting review.
+            </div>
+
+            <div class="message error" id="errorMessage">
+                Sorry, there was a problem submitting your listing. Please try again.
+            </div>
+
+        </form>
+
+    </section>
+
 </main>
+
 <section id="how-it-works" class="info-section">
+
     <div class="section-title">
         <h2>How TradeNest Works</h2>
         <p>Simple buying and selling.</p>
     </div>
-<div class="info-grid">
-    <div class="info-card">
-        <div class="icon">🔎</div>
-        <h3>1. Find an Item</h3>
-        <p>Search listings or browse by category to find something you like.</p>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <div class="icon">🔎</div>
+            <h3>1. Find an Item</h3>
+            <p>Search listings or browse by category to find something you like.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="icon">💬</div>
+            <h3>2. Contact the Seller</h3>
+            <p>Ask questions and arrange the details directly with the seller.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="icon">🤝</div>
+            <h3>3. Complete the Deal</h3>
+            <p>Agree the collection, delivery and payment arrangements between yourselves.</p>
+        </div>
+
     </div>
-    <div class="info-card">
-        <div class="icon">💬</div>
-        <h3>2. Contact the Seller</h3>
-        <p>Ask questions and arrange the details directly with the seller.</p>
-    </div>
-    <div class="info-card">
-        <div class="icon">🤝</div>
-        <h3>3. Complete the Deal</h3>
-        <p>Agree the collection, delivery and payment arrangements between yourselves.</p>
-    </div>
-</div>
+
 </section>
+
 <footer>
     <h2>TradeNest</h2>
     <p>Buy • Sell • Discover</p>
-    <p>© 2026 TradeNest. Marketplace concept.</p>
+    <p>© 2026 TradeNest.</p>
     <p>TradeNest does not currently process payments or transactions.</p>
 </footer>
+
 <div class="modal" id="listingModal">
+
     <div class="modal-content">
+
         <button class="close" onclick="closeModal()">×</button>
-    <div class="modal-image" id="modalImage">📦</div>
-    <h2 id="modalTitle"></h2>
-    <div class="price" id="modalPrice"></div>
-    <p id="modalDetails" class="details"></p>
-    <br>
-    <p id="modalDescription"></p>
-    <button class="contact-btn" onclick="contactSeller()">Contact Seller</button>
+
+        <div class="modal-image" id="modalImage">📦</div>
+
+        <h2 id="modalTitle"></h2>
+
+        <div class="price" id="modalPrice"></div>
+
+        <p id="modalDetails" class="details"></p>
+
+        <br>
+
+        <p id="modalDescription"></p>
+
+        <button class="contact-btn" onclick="contactSeller()">
+            Contact Seller
+        </button>
+
+    </div>
+
 </div>
-</div>
+
 <script>
+
+const FORM_ID = "0avrgsmw12v";
+
 const listings = [
     {
         id: 1,
@@ -648,153 +900,380 @@ const listings = [
         description: "Good working smartphone with normal signs of use."
     }
 ];
+
 let currentCategory = "All";
 let currentSearch = "";
+
 function renderListings(data) {
+
     const grid = document.getElementById("listingGrid");
     const count = document.getElementById("resultsCount");
+
     grid.innerHTML = "";
+
     if (data.length === 0) {
+
         grid.innerHTML = `
             <div class="no-results">
                 <h3>No listings found</h3>
                 <p>Try another search or category.</p>
             </div>
         `;
+
         count.textContent = "0 listings";
         return;
     }
-    count.textContent = `${data.length} listing${data.length === 1 ? "" : "s"}`;
+
+    count.textContent =
+        `${data.length} listing${data.length === 1 ? "" : "s"}`;
+
     data.forEach(item => {
-        const saved = localStorage.getItem("favorite-" + item.id) === "true";
+
+        const saved =
+            localStorage.getItem("favorite-" + item.id) === "true";
+
         grid.innerHTML += `
             <article class="card">
-                <button class="favorite ${saved ? "saved" : ""}"
+
+                <button
+                    class="favorite ${saved ? "saved" : ""}"
                     onclick="toggleFavorite(${item.id}, this)">
                     ${saved ? "♥" : "♡"}
                 </button>
+
                 <div class="card-image">${item.icon}</div>
+
                 <div class="card-content">
+
                     <h3>${item.title}</h3>
-                    <div class="price">£${item.price.toFixed(2)}</div>
+
+                    <div class="price">
+                        £${item.price.toFixed(2)}
+                    </div>
+
                     <div class="details">
                         ${item.condition} • ${item.category}<br>
                         📍 ${item.location}
                     </div>
+
                     <div class="card-actions">
-                        <button class="btn btn-primary"
+
+                        <button
+                            class="btn btn-primary"
                             onclick="viewListing(${item.id})">
                             View Listing
                         </button>
-                        <button class="btn btn-secondary"
+
+                        <button
+                            class="btn btn-secondary"
                             onclick="contactSeller('${item.title.replace(/'/g, "\\'")}')">
                             Contact
                         </button>
+
                     </div>
+
                 </div>
+
             </article>
         `;
     });
 }
+
 function applyFilters() {
-    const condition = document.getElementById("conditionFilter").value;
-    const sort = document.getElementById("sortFilter").value;
+
+    const condition =
+        document.getElementById("conditionFilter").value;
+
+    const sort =
+        document.getElementById("sortFilter").value;
+
     let filtered = listings.filter(item => {
+
         const matchesCategory =
             currentCategory === "All" ||
             item.category === currentCategory;
+
         const matchesCondition =
             condition === "All" ||
             item.condition === condition;
+
         const searchText =
             `${item.title} ${item.category} ${item.description} ${item.location}`
             .toLowerCase();
+
         const matchesSearch =
             currentSearch === "" ||
             searchText.includes(currentSearch.toLowerCase());
-        return matchesCategory && matchesCondition && matchesSearch;
+
+        return matchesCategory &&
+               matchesCondition &&
+               matchesSearch;
     });
+
     if (sort === "low") {
         filtered.sort((a,b) => a.price - b.price);
     }
+
     if (sort === "high") {
         filtered.sort((a,b) => b.price - a.price);
     }
+
     renderListings(filtered);
 }
+
 function filterCategory(category, element) {
+
     currentCategory = category;
+
     document.querySelectorAll(".category")
         .forEach(cat => cat.classList.remove("active"));
+
     element.classList.add("active");
+
     applyFilters();
+
     document.getElementById("listings")
         .scrollIntoView({ behavior: "smooth" });
 }
+
 function searchListings() {
+
     currentSearch =
         document.getElementById("searchInput").value.trim();
+
     applyFilters();
+
     document.getElementById("listings")
         .scrollIntoView({ behavior: "smooth" });
 }
+
 document.getElementById("searchInput")
     .addEventListener("keydown", function(event) {
+
         if (event.key === "Enter") {
             searchListings();
         }
+
     });
+
 function viewListing(id) {
-    const item = listings.find(listing => listing.id === id);
+
+    const item =
+        listings.find(listing => listing.id === id);
+
     if (!item) return;
-    document.getElementById("modalImage").textContent = item.icon;
-    document.getElementById("modalTitle").textContent = item.title;
+
+    document.getElementById("modalImage").textContent =
+        item.icon;
+
+    document.getElementById("modalTitle").textContent =
+        item.title;
+
     document.getElementById("modalPrice").textContent =
         `£${item.price.toFixed(2)}`;
+
     document.getElementById("modalDetails").textContent =
         `${item.condition} • ${item.category} • 📍 ${item.location}`;
+
     document.getElementById("modalDescription").textContent =
         item.description;
+
     document.getElementById("listingModal")
         .classList.add("show");
 }
+
 function closeModal() {
+
     document.getElementById("listingModal")
         .classList.remove("show");
 }
+
 function contactSeller(title = "this item") {
+
     const subject =
         encodeURIComponent(`TradeNest enquiry: ${title}`);
+
     const body =
         encodeURIComponent(
             `Hello,\n\nI'm interested in your TradeNest listing: ${title}.\n\nPlease let me know if it is still available.\n\nThanks.`
         );
+
     window.location.href =
         `mailto:?subject=${subject}&body=${body}`;
 }
+
 function toggleFavorite(id, button) {
+
     const key = "favorite-" + id;
-    const saved = localStorage.getItem(key) === "true";
-    localStorage.setItem(key, saved ? "false" : "true");
-    button.classList.toggle("saved", !saved);
-    button.textContent = saved ? "♡" : "♥";
+
+    const saved =
+        localStorage.getItem(key) === "true";
+
+    localStorage.setItem(
+        key,
+        saved ? "false" : "true"
+    );
+
+    button.classList.toggle(
+        "saved",
+        !saved
+    );
+
+    button.textContent =
+        saved ? "♡" : "♥";
 }
-document.getElementById("sellForm")
-    .addEventListener("submit", function(event) {
-        event.preventDefault();
-        document.getElementById("sellMessage")
-            .style.display = "block";
-        this.reset();
-        document.getElementById("sellMessage")
-            .scrollIntoView({ behavior: "smooth" });
+
+
+/* PHOTO PREVIEW */
+
+document.getElementById("itemPhotos")
+    .addEventListener("change", function() {
+
+        const preview =
+            document.getElementById("photoPreview");
+
+        preview.innerHTML = "";
+
+        const files =
+            Array.from(this.files);
+
+        if (files.length > 5) {
+
+            alert("Please select no more than 5 photos.");
+
+            this.value = "";
+            return;
+        }
+
+        files.forEach(file => {
+
+            if (!file.type.startsWith("image/")) {
+                return;
+            }
+
+            const reader =
+                new FileReader();
+
+            reader.onload = function(event) {
+
+                const img =
+                    document.createElement("img");
+
+                img.src = event.target.result;
+
+                preview.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+        });
     });
+
+
+/* REAL FORMINIT SUBMISSION */
+
+document.getElementById("sellForm")
+    .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const form = this;
+
+        const button =
+            document.getElementById("submitButton");
+
+        const success =
+            document.getElementById("successMessage");
+
+        const error =
+            document.getElementById("errorMessage");
+
+        success.style.display = "none";
+        error.style.display = "none";
+
+        const photoInput =
+            document.getElementById("itemPhotos");
+
+        if (photoInput.files.length > 5) {
+
+            error.textContent =
+                "Please select no more than 5 photos.";
+
+            error.style.display = "block";
+
+            return;
+        }
+
+        button.disabled = true;
+        button.textContent = "Submitting...";
+
+        try {
+
+            const formData =
+                new FormData(form);
+
+            const response =
+                await fetch(
+                    `https://forminit.com/f/${FORM_ID}`,
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                );
+
+            if (!response.ok) {
+                throw new Error("Submission failed");
+            }
+
+            form.reset();
+
+            document.getElementById("photoPreview")
+                .innerHTML = "";
+
+            success.textContent =
+                "Thank you! Your listing has been submitted successfully and is now awaiting review.";
+
+            success.style.display = "block";
+
+            success.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        } catch (submissionError) {
+
+            console.error(submissionError);
+
+            error.textContent =
+                "Sorry, we couldn't submit your listing. Please check your internet connection and try again.";
+
+            error.style.display = "block";
+
+            error.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        } finally {
+
+            button.disabled = false;
+            button.textContent =
+                "Submit Listing for Review";
+        }
+    });
+
+
 document.getElementById("listingModal")
     .addEventListener("click", function(event) {
+
         if (event.target === this) {
             closeModal();
         }
+
     });
+
 renderListings(listings);
+
 </script>
+
 </body>
 </html>
