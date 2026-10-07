@@ -1,1279 +1,728 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TradeNest - Buy, sell and discover items locally.">
-<title>TradeNest Marketplace</title>
 
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fa;
-    color: #172033;
-    line-height: 1.6;
-}
 
-header {
-    background: #132238;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
 
-.navbar {
-    max-width: 1200px;
-    margin: auto;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
 
-.logo {
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
 
-.logo span {
-    color: #42d392;
-}
 
-nav {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
 
-nav a:hover {
-    color: #42d392;
-}
 
-.sell-nav {
-    background: #42d392;
-    color: #102019 !important;
-    padding: 9px 16px;
-    border-radius: 8px;
-}
 
-.hero {
-    background: linear-gradient(135deg, #132238, #203b5c);
-    color: white;
-    padding: 65px 20px;
-    text-align: center;
-}
 
-.hero h1 {
-    font-size: clamp(36px, 7vw, 58px);
-    margin-bottom: 12px;
-}
+<div class="navbar">
 
-.hero p {
-    max-width: 700px;
-    margin: 0 auto 28px;
-    font-size: 18px;
-    color: #dce7f2;
-}
-
-.search-box {
-    max-width: 760px;
-    margin: auto;
-    display: flex;
-    background: white;
-    padding: 6px;
-    border-radius: 12px;
-}
-
-.search-box input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 15px;
-    font-size: 16px;
-    border-radius: 8px;
-}
-
-.search-box button {
-    border: none;
-    background: #42d392;
-    padding: 0 25px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 45px 20px;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 28px;
-}
-
-.section-title h2 {
-    font-size: 32px;
-    margin-bottom: 6px;
-}
-
-.categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 12px;
-    margin-bottom: 45px;
-}
-
-.category {
-    background: white;
-    border: 1px solid #e2e7ed;
-    padding: 18px 10px;
-    text-align: center;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-.category:hover,
-.category.active {
-    background: #132238;
-    color: white;
-    transform: translateY(-2px);
-}
-
-.controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 25px;
-    align-items: center;
-}
-
-.controls select {
-    padding: 11px 14px;
-    border: 1px solid #d5dce4;
-    border-radius: 8px;
-    background: white;
-    font-size: 14px;
-}
-
-.results {
-    margin-left: auto;
-    font-weight: bold;
-    color: #667085;
-}
-
-.listings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 22px;
-}
-
-.card {
-    background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 4px 18px rgba(20,35,55,0.08);
-    border: 1px solid #e7ebef;
-    transition: 0.2s;
-    position: relative;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(20,35,55,0.13);
-}
-
-.card-image {
-    height: 175px;
-    background: linear-gradient(135deg, #dce7f2, #edf2f6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 55px;
-}
-
-.card-content {
-    padding: 18px;
-}
-
-.card h3 {
-    font-size: 19px;
-    margin-bottom: 5px;
-}
-
-.price {
-    font-size: 22px;
-    font-weight: 800;
-    color: #132238;
-    margin: 8px 0;
-}
-
-.details {
-    color: #667085;
-    font-size: 14px;
-}
-
-.card-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.btn {
-    flex: 1;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.btn-primary {
-    background: #132238;
-    color: white;
-}
-
-.btn-primary:hover {
-    background: #203b5c;
-}
-
-.btn-secondary {
-    background: #eef2f5;
-    color: #172033;
-}
-
-.favorite {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: none;
-    background: white;
-    font-size: 19px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-.favorite.saved {
-    color: #e63946;
-}
-
-.no-results {
-    text-align: center;
-    padding: 50px;
-    grid-column: 1 / -1;
-    color: #667085;
-}
-
-.sell-section {
-    background: white;
-    border-radius: 16px;
-    padding: 35px;
-    box-shadow: 0 4px 18px rgba(20,35,55,0.07);
-    margin-top: 45px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group.full {
-    grid-column: 1 / -1;
-}
-
-.form-group label {
-    font-weight: bold;
-    margin-bottom: 6px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    border: 1px solid #d5dce4;
-    border-radius: 8px;
-    padding: 12px;
-    font: inherit;
-}
-
-.form-group textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.photo-help {
-    font-size: 13px;
-    color: #667085;
-    margin-top: 5px;
-}
-
-.photo-preview {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin-top: 12px;
-}
-
-.photo-preview img {
-    width: 100%;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #d5dce4;
-}
-
-.submit-btn {
-    background: #42d392;
-    color: #102019;
-    border: none;
-    padding: 13px 24px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 18px;
-}
-
-.submit-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.info-section {
-    background: #eaf5f0;
-    padding: 45px 20px;
-    text-align: center;
-}
-
-.info-grid {
-    max-width: 1000px;
-    margin: 25px auto 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.info-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-}
-
-.info-card .icon {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-footer {
-    background: #132238;
-    color: white;
-    padding: 35px 20px;
-    text-align: center;
-}
-
-footer p {
-    color: #cbd5df;
-    margin: 5px;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    z-index: 2000;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-.modal.show {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background: white;
-    width: 100%;
-    max-width: 650px;
-    border-radius: 16px;
-    padding: 30px;
-    position: relative;
-}
-
-.close {
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    border: none;
-    background: none;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.modal-image {
-    height: 220px;
-    background: #edf2f6;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-    margin-bottom: 20px;
-}
-
-.contact-btn {
-    width: 100%;
-    background: #42d392;
-    color: #102019;
-    border: none;
-    padding: 13px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 18px;
-}
-
-.message {
-    display: none;
-    padding: 14px;
-    border-radius: 8px;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.message.success {
-    background: #e6f7ed;
-    color: #155b38;
-}
-
-.message.error {
-    background: #fdecec;
-    color: #9b1c1c;
-}
-
-@media (max-width: 700px) {
-    .navbar {
-        flex-direction: column;
-    }
-
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .search-box {
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .search-box button {
-        padding: 13px;
-    }
-
-    .form-grid,
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .photo-preview {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .sell-section {
-        padding: 25px 18px;
-    }
-
-    .results {
-        width: 100%;
-        margin-left: 0;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <div class="navbar">
-        <div class="logo">Trade<span>Nest</span></div>
-
-        <nav>
-            <a href="#listings">Browse</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#sell" class="sell-nav">Sell Something</a>
-        </nav>
-    </div>
-</header>
-
-<section class="hero">
-    <h1>Buy. Sell. Discover.</h1>
-    <p>A simple marketplace for finding great items and giving unwanted things a new home.</p>
-
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search for items...">
-        <button onclick="searchListings()">Search</button>
-    </div>
-</section>
-
-<main class="container">
-
-    <div class="section-title">
-        <h2>Browse Categories</h2>
-        <p>Find what you're looking for.</p>
+    <div class="logo">
+        Trade<span>Nest</span>
     </div>
 
-    <div class="categories">
-        <div class="category active" onclick="filterCategory('All', this)">🏠 All</div>
-        <div class="category" onclick="filterCategory('Technology', this)">💻 Technology</div>
-        <div class="category" onclick="filterCategory('Clothing', this)">👕 Clothing</div>
-        <div class="category" onclick="filterCategory('Home', this)">🏡 Home</div>
-        <div class="category" onclick="filterCategory('Games', this)">🎮 Games</div>
-        <div class="category" onclick="filterCategory('Books', this)">📚 Books</div>
-        <div class="category" onclick="filterCategory('Tools', this)">🔧 Tools</div>
-        <div class="category" onclick="filterCategory('Motoring', this)">🚗 Motoring</div>
+    <nav>
+        <a href="#listings">Browse</a>
+        <a href="#businesses">Businesses</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#sell" class="sell-nav">Sell Something</a>
+        <a href="#account" class="nav-button">Login / Join</a>
+    </nav>
+
+</div>
+
+
+
+
+
+
+
+<div class="hero-badge">
+    🇬🇧 Starting in London
+</div>
+
+<h1>
+    Buy. Sell. <span>Discover.</span>
+</h1>
+
+<p>
+    TradeNest is a new marketplace for people and businesses
+    to buy and sell locally, starting in London.
+</p>
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="What are you looking for?">
+
+    <button onclick="searchListings()">
+        Search
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="section-title">
+
+    <h2>Browse Categories</h2>
+
+    <p>
+        Find items from private sellers and businesses.
+    </p>
+
+</div>
+
+<div class="categories">
+
+    <div class="category active"
+         onclick="filterCategory('All', this)">
+        🏠 All
     </div>
 
-    <section id="listings">
-
-        <div class="section-title">
-            <h2>Featured Listings</h2>
-            <p>Explore some of the latest items on TradeNest.</p>
-        </div>
-
-        <div class="controls">
-
-            <select id="conditionFilter" onchange="applyFilters()">
-                <option value="All">All Conditions</option>
-                <option value="New">New</option>
-                <option value="Excellent">Excellent</option>
-                <option value="Good">Good</option>
-                <option value="Used">Used</option>
-            </select>
-
-            <select id="sortFilter" onchange="applyFilters()">
-                <option value="featured">Featured</option>
-                <option value="low">Price: Low to High</option>
-                <option value="high">Price: High to Low</option>
-            </select>
-
-            <div class="results" id="resultsCount"></div>
-        </div>
-
-        <div class="listings" id="listingGrid"></div>
-
-    </section>
-
-    <!-- SELL FORM -->
-    <section id="sell" class="sell-section">
-
-        <div class="section-title">
-            <h2>Sell Something</h2>
-            <p>Submit your item to TradeNest for review.</p>
-        </div>
-
-        <form id="sellForm" enctype="multipart/form-data">
-
-            <div class="form-grid">
-
-                <div class="form-group">
-                    <label for="sellerName">Your name *</label>
-                    <input
-                        id="sellerName"
-                        name="seller_name"
-                        required
-                        placeholder="Your name">
-                </div>
-
-                <div class="form-group">
-                    <label for="sellerEmail">Your email *</label>
-                    <input
-                        id="sellerEmail"
-                        name="seller_email"
-                        type="email"
-                        required
-                        placeholder="you@example.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="sellerPhone">Phone number</label>
-                    <input
-                        id="sellerPhone"
-                        name="seller_phone"
-                        type="tel"
-                        placeholder="Optional">
-                </div>
-
-                <div class="form-group">
-                    <label for="itemTitle">Item title *</label>
-                    <input
-                        id="itemTitle"
-                        name="item_title"
-                        required
-                        placeholder="e.g. Samsung Galaxy Phone">
-                </div>
-
-                <div class="form-group">
-                    <label for="itemPrice">Price (£) *</label>
-                    <input
-                        id="itemPrice"
-                        name="item_price"
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        required
-                        placeholder="100">
-                </div>
-
-                <div class="form-group">
-                    <label for="itemCategory">Category *</label>
-                    <select id="itemCategory" name="item_category" required>
-                        <option value="">Select category</option>
-                        <option>Technology</option>
-                        <option>Clothing</option>
-                        <option>Home</option>
-                        <option>Games</option>
-                        <option>Books</option>
-                        <option>Tools</option>
-                        <option>Motoring</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="itemCondition">Condition *</label>
-                    <select id="itemCondition" name="item_condition" required>
-                        <option value="">Select condition</option>
-                        <option>New</option>
-                        <option>Excellent</option>
-                        <option>Good</option>
-                        <option>Used</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="itemLocation">Location *</label>
-                    <input
-                        id="itemLocation"
-                        name="item_location"
-                        required
-                        placeholder="e.g. London">
-                </div>
-
-                <div class="form-group full">
-                    <label for="itemDescription">Description *</label>
-                    <textarea
-                        id="itemDescription"
-                        name="item_description"
-                        required
-                        placeholder="Tell buyers about your item..."></textarea>
-                </div>
-
-                <div class="form-group full">
-
-                    <label for="itemPhotos">
-                        Photos — up to 5
-                    </label>
-
-                    <input
-                        id="itemPhotos"
-                        name="fi-file-photos[]"
-                        type="file"
-                        accept="image/*"
-                        multiple>
-
-                    <div class="photo-help">
-                        You can select up to 5 photos. Please keep the total upload size within Forminit's limit.
-                    </div>
-
-                    <div id="photoPreview" class="photo-preview"></div>
-
-                </div>
-
-                <div class="form-group full">
-
-                    <label>
-                        <input
-                            type="checkbox"
-                            id="sellerConfirmation"
-                            name="seller_confirmation"
-                            value="Confirmed"
-                            required>
-
-                        I confirm that the information I have provided is accurate and that I am entitled to sell this item. *
-                    </label>
-
-                </div>
-
-            </div>
-
-            <button type="submit" class="submit-btn" id="submitButton">
-                Submit Listing for Review
-            </button>
-
-            <div class="message success" id="successMessage">
-                Thank you! Your listing has been submitted successfully and is now awaiting review.
-            </div>
-
-            <div class="message error" id="errorMessage">
-                Sorry, there was a problem submitting your listing. Please try again.
-            </div>
-
-        </form>
-
-    </section>
-
-</main>
-
-<section id="how-it-works" class="info-section">
-
-    <div class="section-title">
-        <h2>How TradeNest Works</h2>
-        <p>Simple buying and selling.</p>
+    <div class="category"
+         onclick="filterCategory('Technology', this)">
+        💻 Technology
     </div>
 
-    <div class="info-grid">
+    <div class="category"
+         onclick="filterCategory('Clothing', this)">
+        👕 Clothing
+    </div>
 
-        <div class="info-card">
-            <div class="icon">🔎</div>
-            <h3>1. Find an Item</h3>
-            <p>Search listings or browse by category to find something you like.</p>
-        </div>
+    <div class="category"
+         onclick="filterCategory('Home', this)">
+        🏡 Home
+    </div>
 
-        <div class="info-card">
-            <div class="icon">💬</div>
-            <h3>2. Contact the Seller</h3>
-            <p>Ask questions and arrange the details directly with the seller.</p>
-        </div>
+    <div class="category"
+         onclick="filterCategory('Games', this)">
+        🎮 Games
+    </div>
 
-        <div class="info-card">
-            <div class="icon">🤝</div>
-            <h3>3. Complete the Deal</h3>
-            <p>Agree the collection, delivery and payment arrangements between yourselves.</p>
-        </div>
+    <div class="category"
+         onclick="filterCategory('Books', this)">
+        📚 Books
+    </div>
+
+    <div class="category"
+         onclick="filterCategory('Tools', this)">
+        🔧 Tools
+    </div>
+
+    <div class="category"
+         onclick="filterCategory('Motoring', this)">
+        🚗 Motoring
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="section-title">
+
+    <h2>Featured Listings</h2>
+
+    <p>
+        Explore items currently available on TradeNest.
+    </p>
+
+</div>
+
+<div class="controls">
+
+    <select id="conditionFilter"
+            onchange="applyFilters()">
+
+        <option value="All">
+            All Conditions
+        </option>
+
+        <option value="New">
+            New
+        </option>
+
+        <option value="Excellent">
+            Excellent
+        </option>
+
+        <option value="Good">
+            Good
+        </option>
+
+        <option value="Used">
+            Used
+        </option>
+
+    </select>
+
+    <select id="sortFilter"
+            onchange="applyFilters()">
+
+        <option value="featured">
+            Featured
+        </option>
+
+        <option value="low">
+            Price: Low to High
+        </option>
+
+        <option value="high">
+            Price: High to Low
+        </option>
+
+    </select>
+
+    <div class="results"
+         id="resultsCount">
+    </div>
+
+</div>
+
+<div class="listings"
+     id="listingGrid">
+</div>
+
+
+
+
+
+
+
+
+<div class="business-grid">
+
+    <div>
+
+        <h2>
+            Are you a business?
+        </h2>
+
+        <p>
+            TradeNest isn't just for private sellers.
+            Businesses can create a presence on the marketplace
+            and reach local customers.
+        </p>
+
+        <ul class="business-list">
+
+            <li>✓ Business seller profile</li>
+
+            <li>✓ Multiple product listings</li>
+
+            <li>✓ Professional shop presence</li>
+
+            <li>✓ Manage your listings</li>
+
+            <li>✓ Reach London buyers</li>
+
+        </ul>
+
+        <a href="#pricing"
+           class="business-button">
+            View Business Options
+        </a>
 
     </div>
 
-</section>
+    <div class="business-box">
 
-<footer>
-    <h2>TradeNest</h2>
-    <p>Buy • Sell • Discover</p>
-    <p>© 2026 TradeNest.</p>
-    <p>TradeNest does not currently process payments or transactions.</p>
-</footer>
+        <div class="icon">
+            🏪
+        </div>
 
-<div class="modal" id="listingModal">
+        <h3>
+            Build your TradeNest shop
+        </h3>
 
-    <div class="modal-content">
+        <p>
+            Coming as part of our business membership.
+        </p>
 
-        <button class="close" onclick="closeModal()">×</button>
+    </div>
 
-        <div class="modal-image" id="modalImage">📦</div>
+</div>
 
-        <h2 id="modalTitle"></h2>
 
-        <div class="price" id="modalPrice"></div>
 
-        <p id="modalDetails" class="details"></p>
 
-        <br>
 
-        <p id="modalDescription"></p>
 
-        <button class="contact-btn" onclick="contactSeller()">
-            Contact Seller
+
+
+<div class="section-title">
+
+    <h2>
+        Simple TradeNest Membership
+    </h2>
+
+    <p>
+        Start free. Upgrade when you need more.
+    </p>
+
+</div>
+
+<div class="pricing-grid">
+
+    <div class="pricing-card">
+
+        <h3>
+            Free
+        </h3>
+
+        <p>
+            For occasional sellers and buyers.
+        </p>
+
+        <div class="pricing-price">
+            £0
+            <span>forever</span>
+        </div>
+
+        <ul class="pricing-features">
+
+            <li>✓ Browse listings</li>
+
+            <li>✓ Contact sellers</li>
+
+            <li>✓ Create limited listings</li>
+
+            <li>✓ Save favourites</li>
+
+        </ul>
+
+        <button class="pricing-button free-button"
+                onclick="openAccount()">
+            Create Free Account
+        </button>
+
+    </div>
+
+
+    <div class="pricing-card featured">
+
+        <div class="pricing-badge">
+            TRADEST NEST PLUS
+        </div>
+
+        <h3>
+            TradeNest Plus
+        </h3>
+
+        <p>
+            For regular sellers and businesses.
+        </p>
+
+        <div class="pricing-price">
+            £4.99
+            <span>/ month</span>
+        </div>
+
+        <ul class="pricing-features">
+
+            <li>✓ More listings</li>
+
+            <li>✓ More photographs</li>
+
+            <li>✓ Seller profile</li>
+
+            <li>✓ Featured listing opportunities</li>
+
+            <li>✓ Priority marketplace tools</li>
+
+        </ul>
+
+        <button class="pricing-button plus-button"
+                onclick="openSubscription()">
+            Join TradeNest Plus
         </button>
 
     </div>
 
 </div>
 
-<script>
-
-const FORM_ID = "0avrgsmw12v";
-
-const listings = [
-    {
-        id: 1,
-        title: "Wireless Headphones",
-        price: 75,
-        category: "Technology",
-        condition: "Excellent",
-        location: "London",
-        icon: "🎧",
-        description: "Quality wireless headphones in excellent condition with good battery life."
-    },
-    {
-        id: 2,
-        title: "Gaming Console",
-        price: 220,
-        category: "Games",
-        condition: "Good",
-        location: "London",
-        icon: "🎮",
-        description: "Pre-owned gaming console in good working condition."
-    },
-    {
-        id: 3,
-        title: "Vintage Coffee Table",
-        price: 90,
-        category: "Home",
-        condition: "Good",
-        location: "Manchester",
-        icon: "🪑",
-        description: "Characterful vintage coffee table suitable for a living room."
-    },
-    {
-        id: 4,
-        title: "Men's Jacket",
-        price: 45,
-        category: "Clothing",
-        condition: "Excellent",
-        location: "Bristol",
-        icon: "🧥",
-        description: "Smart men's jacket in excellent condition."
-    },
-    {
-        id: 5,
-        title: "Finance Textbook",
-        price: 25,
-        category: "Books",
-        condition: "Good",
-        location: "Birmingham",
-        icon: "📚",
-        description: "Useful finance textbook in good condition."
-    },
-    {
-        id: 6,
-        title: "Cordless Drill",
-        price: 60,
-        category: "Tools",
-        condition: "Good",
-        location: "Leeds",
-        icon: "🔧",
-        description: "Cordless drill suitable for general DIY projects."
-    },
-    {
-        id: 7,
-        title: "Car Roof Bars",
-        price: 85,
-        category: "Motoring",
-        condition: "Used",
-        location: "Gloucester",
-        icon: "🚗",
-        description: "Used roof bars suitable for a range of vehicles."
-    },
-    {
-        id: 8,
-        title: "Smartphone",
-        price: 180,
-        category: "Technology",
-        condition: "Good",
-        location: "London",
-        icon: "📱",
-        description: "Good working smartphone with normal signs of use."
-    }
-];
-
-let currentCategory = "All";
-let currentSearch = "";
-
-function renderListings(data) {
-
-    const grid = document.getElementById("listingGrid");
-    const count = document.getElementById("resultsCount");
-
-    grid.innerHTML = "";
-
-    if (data.length === 0) {
-
-        grid.innerHTML = `
-            <div class="no-results">
-                <h3>No listings found</h3>
-                <p>Try another search or category.</p>
-            </div>
-        `;
 
-        count.textContent = "0 listings";
-        return;
-    }
 
-    count.textContent =
-        `${data.length} listing${data.length === 1 ? "" : "s"}`;
 
-    data.forEach(item => {
 
-        const saved =
-            localStorage.getItem("favorite-" + item.id) === "true";
 
-        grid.innerHTML += `
-            <article class="card">
 
-                <button
-                    class="favorite ${saved ? "saved" : ""}"
-                    onclick="toggleFavorite(${item.id}, this)">
-                    ${saved ? "♥" : "♡"}
-                </button>
 
-                <div class="card-image">${item.icon}</div>
+<div class="section-title">
 
-                <div class="card-content">
+    <h2>
+        Sell on TradeNest
+    </h2>
 
-                    <h3>${item.title}</h3>
+    <p>
+        Create your listing and reach local buyers.
+    </p>
 
-                    <div class="price">
-                        £${item.price.toFixed(2)}
-                    </div>
+</div>
 
-                    <div class="details">
-                        ${item.condition} • ${item.category}<br>
-                        📍 ${item.location}
-                    </div>
+<form id="sellForm">
 
-                    <div class="card-actions">
+    <div class="form-grid">
 
-                        <button
-                            class="btn btn-primary"
-                            onclick="viewListing(${item.id})">
-                            View Listing
-                        </button>
+        <div class="form-group">
 
-                        <button
-                            class="btn btn-secondary"
-                            onclick="contactSeller('${item.title.replace(/'/g, "\\'")}')">
-                            Contact
-                        </button>
+            <label>
+                Seller type
+            </label>
 
-                    </div>
+            <select required>
 
-                </div>
+                <option value="">
+                    Select seller type
+                </option>
 
-            </article>
-        `;
-    });
-}
+                <option>
+                    Private seller
+                </option>
 
-function applyFilters() {
+                <option>
+                    Business
+                </option>
 
-    const condition =
-        document.getElementById("conditionFilter").value;
+            </select>
 
-    const sort =
-        document.getElementById("sortFilter").value;
+        </div>
 
-    let filtered = listings.filter(item => {
 
-        const matchesCategory =
-            currentCategory === "All" ||
-            item.category === currentCategory;
+        <div class="form-group">
 
-        const matchesCondition =
-            condition === "All" ||
-            item.condition === condition;
+            <label>
+                Item title
+            </label>
 
-        const searchText =
-            `${item.title} ${item.category} ${item.description} ${item.location}`
-            .toLowerCase();
+            <input
+                required
+                placeholder="e.g. Samsung Galaxy Phone">
 
-        const matchesSearch =
-            currentSearch === "" ||
-            searchText.includes(currentSearch.toLowerCase());
+        </div>
 
-        return matchesCategory &&
-               matchesCondition &&
-               matchesSearch;
-    });
 
-    if (sort === "low") {
-        filtered.sort((a,b) => a.price - b.price);
-    }
+        <div class="form-group">
 
-    if (sort === "high") {
-        filtered.sort((a,b) => b.price - a.price);
-    }
+            <label>
+                Price (£)
+            </label>
 
-    renderListings(filtered);
-}
+            <input
+                type="number"
+                min="0"
+                step="0.01"
+                required
+                placeholder="100">
 
-function filterCategory(category, element) {
+        </div>
 
-    currentCategory = category;
 
-    document.querySelectorAll(".category")
-        .forEach(cat => cat.classList.remove("active"));
+        <div class="form-group">
 
-    element.classList.add("active");
+            <label>
+                Category
+            </label>
 
-    applyFilters();
+            <select required>
 
-    document.getElementById("listings")
-        .scrollIntoView({ behavior: "smooth" });
-}
+                <option value="">
+                    Select category
+                </option>
 
-function searchListings() {
+                <option>Technology</option>
+                <option>Clothing</option>
+                <option>Home</option>
+                <option>Games</option>
+                <option>Books</option>
+                <option>Tools</option>
+                <option>Motoring</option>
 
-    currentSearch =
-        document.getElementById("searchInput").value.trim();
+            </select>
 
-    applyFilters();
+        </div>
 
-    document.getElementById("listings")
-        .scrollIntoView({ behavior: "smooth" });
-}
 
-document.getElementById("searchInput")
-    .addEventListener("keydown", function(event) {
+        <div class="form-group">
 
-        if (event.key === "Enter") {
-            searchListings();
-        }
+            <label>
+                Condition
+            </label>
 
-    });
+            <select required>
 
-function viewListing(id) {
+                <option value="">
+                    Select condition
+                </option>
 
-    const item =
-        listings.find(listing => listing.id === id);
+                <option>New</option>
+                <option>Excellent</option>
+                <option>Good</option>
+                <option>Used</option>
 
-    if (!item) return;
+            </select>
 
-    document.getElementById("modalImage").textContent =
-        item.icon;
+        </div>
 
-    document.getElementById("modalTitle").textContent =
-        item.title;
 
-    document.getElementById("modalPrice").textContent =
-        `£${item.price.toFixed(2)}`;
+        <div class="form-group">
 
-    document.getElementById("modalDetails").textContent =
-        `${item.condition} • ${item.category} • 📍 ${item.location}`;
+            <label>
+                Location
+            </label>
 
-    document.getElementById("modalDescription").textContent =
-        item.description;
+            <input
+                required
+                placeholder="e.g. Westminster">
 
-    document.getElementById("listingModal")
-        .classList.add("show");
-}
+        </div>
 
-function closeModal() {
 
-    document.getElementById("listingModal")
-        .classList.remove("show");
-}
+        <div class="form-group full">
 
-function contactSeller(title = "this item") {
+            <label>
+                Description
+            </label>
 
-    const subject =
-        encodeURIComponent(`TradeNest enquiry: ${title}`);
+            <textarea
+                required
+                placeholder="Tell buyers about your item...">
+            </textarea>
 
-    const body =
-        encodeURIComponent(
-            `Hello,\n\nI'm interested in your TradeNest listing: ${title}.\n\nPlease let me know if it is still available.\n\nThanks.`
-        );
+        </div>
 
-    window.location.href =
-        `mailto:?subject=${subject}&body=${body}`;
-}
 
-function toggleFavorite(id, button) {
+        <div class="form-group full">
 
-    const key = "favorite-" + id;
+            <label>
+                Photos
+            </label>
 
-    const saved =
-        localStorage.getItem(key) === "true";
+            <input
+                type="file"
+                accept="image/*"
+                multiple>
 
-    localStorage.setItem(
-        key,
-        saved ? "false" : "true"
-    );
+            <small>
+                Photo storage will be connected to the TradeNest
+                backend in the next stage.
+            </small>
 
-    button.classList.toggle(
-        "saved",
-        !saved
-    );
+        </div>
 
-    button.textContent =
-        saved ? "♡" : "♥";
-}
+    </div>
 
+    <button
+        type="button"
+        class="submit-btn"
+        onclick="openAccount()">
 
-/* PHOTO PREVIEW */
+        Create an account to list your item
 
-document.getElementById("itemPhotos")
-    .addEventListener("change", function() {
+    </button>
 
-        const preview =
-            document.getElementById("photoPreview");
+</form>
 
-        preview.innerHTML = "";
 
-        const files =
-            Array.from(this.files);
 
-        if (files.length > 5) {
 
-            alert("Please select no more than 5 photos.");
 
-            this.value = "";
-            return;
-        }
 
-        files.forEach(file => {
 
-            if (!file.type.startsWith("image/")) {
-                return;
-            }
 
-            const reader =
-                new FileReader();
 
-            reader.onload = function(event) {
+<div class="section-title">
 
-                const img =
-                    document.createElement("img");
+    <h2>
+        How TradeNest Works
+    </h2>
 
-                img.src = event.target.result;
+    <p>
+        Simple local buying and selling.
+    </p>
 
-                preview.appendChild(img);
-            };
+</div>
 
-            reader.readAsDataURL(file);
-        });
-    });
+<div class="info-grid">
 
+    <div class="info-card">
 
-/* REAL FORMINIT SUBMISSION */
+        <div class="icon">
+            🔎
+        </div>
 
-document.getElementById("sellForm")
-    .addEventListener("submit", async function(event) {
+        <h3>
+            1. Find an Item
+        </h3>
 
-        event.preventDefault();
+        <p>
+            Search TradeNest or browse categories.
+        </p>
 
-        const form = this;
+    </div>
 
-        const button =
-            document.getElementById("submitButton");
 
-        const success =
-            document.getElementById("successMessage");
+    <div class="info-card">
 
-        const error =
-            document.getElementById("errorMessage");
+        <div class="icon">
+            👤
+        </div>
 
-        success.style.display = "none";
-        error.style.display = "none";
+        <h3>
+            2. Connect
+        </h3>
 
-        const photoInput =
-            document.getElementById("itemPhotos");
+        <p>
+            Contact the seller and ask questions.
+        </p>
 
-        if (photoInput.files.length > 5) {
+    </div>
 
-            error.textContent =
-                "Please select no more than 5 photos.";
 
-            error.style.display = "block";
+    <div class="info-card">
 
-            return;
-        }
+        <div class="icon">
+            🤝
+        </div>
 
-        button.disabled = true;
-        button.textContent = "Submitting...";
+        <h3>
+            3. Complete the Deal
+        </h3>
 
-        try {
+        <p>
+            Arrange the details directly with the seller.
+        </p>
 
-            const formData =
-                new FormData(form);
+    </div>
 
-            const response =
-                await fetch(
-                    `https://forminit.com/f/${FORM_ID}`,
-                    {
-                        method: "POST",
-                        body: formData
-                    }
-                );
+</div>
 
-            if (!response.ok) {
-                throw new Error("Submission failed");
-            }
 
-            form.reset();
 
-            document.getElementById("photoPreview")
-                .innerHTML = "";
 
-            success.textContent =
-                "Thank you! Your listing has been submitted successfully and is now awaiting review.";
 
-            success.style.display = "block";
 
-            success.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
 
-        } catch (submissionError) {
+<h2>
+    TradeNest
+</h2>
 
-            console.error(submissionError);
+<p>
+    Buy • Sell • Discover
+</p>
 
-            error.textContent =
-                "Sorry, we couldn't submit your listing. Please check your internet connection and try again.";
+<div class="footer-links">
 
-            error.style.display = "block";
+    <a href="#listings">
+        Browse
+    </a>
 
-            error.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+    <a href="#sell">
+        Sell
+    </a>
 
-        } finally {
+    <a href="#businesses">
+        Businesses
+    </a>
 
-            button.disabled = false;
-            button.textContent =
-                "Submit Listing for Review";
-        }
-    });
+    <a href="#pricing">
+        Pricing
+    </a>
 
+</div>
 
-document.getElementById("listingModal")
-    .addEventListener("click", function(event) {
+<p>
+    © 2026 TradeNest.
+</p>
 
-        if (event.target === this) {
-            closeModal();
-        }
+<p>
+    TradeNest is currently developing its marketplace platform.
+</p>
 
-    });
 
-renderListings(listings);
 
-</script>
 
-</body>
-</html>
+
+
+
+<div class="modal-content">
+
+    <button class="close"
+            onclick="closeModal('accountModal')">
+        ×
+    </button>
+
+    <h2>
+        Join TradeNest
+    </h2>
+
+    <p>
+        Account registration is the next part of the TradeNest
+        platform. We're building the secure account system now.
+    </p>
+
+    <button class="modal-button"
+            onclick="closeModal('accountModal')">
+
+        Continue
+
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="modal-content">
+
+    <button class="close"
+            onclick="closeModal('subscriptionModal')">
+        ×
+    </button>
+
+    <h2>
+        TradeNest Plus
+    </h2>
+
+    <p>
+        TradeNest Plus will give regular sellers and businesses
+        additional marketplace features for £4.99 per month.
+    </p>
+
+    <br>
+
+    <p>
+        <strong>
+            Payment will be connected through Stripe in the next
+            development stage.
+        </strong>
+    </p>
+
+    <button class="modal-button"
+            onclick="closeModal('subscriptionModal')">
+
+        Coming Soon
+
+    </button>
+
+</div>
+
+
+
+
+
+
+
