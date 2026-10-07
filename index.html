@@ -29,14 +29,12 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f8fafc;
+    background: var(--light);
     color: var(--text);
     line-height: 1.6;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header {
     background: rgba(255,255,255,0.97);
@@ -122,15 +120,13 @@ header {
     color: var(--primary);
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
     background:
         radial-gradient(circle at top right, rgba(37,99,235,0.16), transparent 35%),
         linear-gradient(135deg, #eff6ff, #ffffff);
-    padding: 80px 20px 70px;
+    padding: 85px 20px 75px;
 }
 
 .hero-container {
@@ -151,7 +147,7 @@ header {
 }
 
 .hero h1 {
-    font-size: clamp(42px, 7vw, 72px);
+    font-size: clamp(44px, 7vw, 76px);
     line-height: 1.05;
     color: var(--dark);
     margin-bottom: 20px;
@@ -207,6 +203,10 @@ header {
     cursor: pointer;
 }
 
+.search-button:hover {
+    background: var(--primary-dark);
+}
+
 .hero-actions {
     margin-top: 25px;
 }
@@ -215,9 +215,7 @@ header {
     margin: 5px;
 }
 
-/* =========================
-   GENERAL
-========================= */
+/* GENERAL SECTIONS */
 
 .section {
     max-width: 1200px;
@@ -240,4 +238,1177 @@ header {
 
 .section-header p {
     color: var(--muted);
-    margin-top: 5
+    margin-top: 5px;
+}
+
+.view-all {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* CATEGORIES */
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.category {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--dark);
+    transition: 0.2s;
+}
+
+.category:hover {
+    transform: translateY(-4px);
+    border-color: #bfdbfe;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+}
+
+.category-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.category h3 {
+    font-size: 17px;
+}
+
+.category p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* LISTINGS */
+
+.listings {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(15,23,42,0.1);
+}
+
+.card-image {
+    height: 190px;
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    position: relative;
+}
+
+.featured {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--primary);
+    color: white;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.favourite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.card-body {
+    padding: 18px;
+}
+
+.card-body h3 {
+    color: var(--dark);
+    margin-bottom: 7px;
+}
+
+.price {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--dark);
+}
+
+.card-meta {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 7px 0 15px;
+}
+
+.card-button {
+    display: block;
+    text-align: center;
+    border: 1px solid var(--border);
+    padding: 9px;
+    border-radius: 8px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* WHY TRADENEST */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.feature-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.feature h3 {
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.feature p {
+    color: var(--muted);
+}
+
+/* BUSINESS */
+
+.business-section {
+    background: #eff6ff;
+}
+
+.business {
+    max-width: 1200px;
+    margin: auto;
+    padding: 70px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.business h2 {
+    font-size: 38px;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.business p {
+    color: var(--muted);
+    margin-bottom: 22px;
+}
+
+.business-list {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.business-list li {
+    margin: 10px 0;
+}
+
+.business-list li::before {
+    content: "✓ ";
+    color: var(--green);
+    font-weight: bold;
+}
+
+.business-visual {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 15px 40px rgba(15,23,42,0.08);
+}
+
+.business-visual h3 {
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.business-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding: 15px 0;
+}
+
+.business-row:last-child {
+    border-bottom: none;
+}
+
+/* HOW IT WORKS */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.step {
+    text-align: center;
+    padding: 25px;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    margin: auto auto 15px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.step h3 {
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+/* PRICING */
+
+.promo {
+    background: var(--dark);
+    color: white;
+    border-radius: 20px;
+    padding: 55px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.promo h2 {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.promo p {
+    color: #d1d5db;
+}
+
+.promo-card {
+    background: white;
+    color: var(--dark);
+    padding: 28px;
+    border-radius: 15px;
+}
+
+.promo-card h3 {
+    font-size: 22px;
+}
+
+.promo-price {
+    font-size: 34px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.promo-card small {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.promo-card ul {
+    list-style: none;
+    margin: 18px 0;
+}
+
+.promo-card li {
+    margin: 8px 0;
+}
+
+.promo-card li::before {
+    content: "✓ ";
+    color: var(--green);
+    font-weight: bold;
+}
+
+/* CTA */
+
+.cta {
+    text-align: center;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    padding: 65px 20px;
+}
+
+.cta h2 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.cta p {
+    max-width: 600px;
+    margin: 0 auto 25px;
+    color: #dbeafe;
+}
+
+.cta .btn {
+    background: white;
+    color: var(--primary);
+}
+
+/* FOOTER */
+
+footer {
+    background: #0f172a;
+    color: white;
+    padding: 50px 20px 25px;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-logo {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.footer-logo span {
+    color: #60a5fa;
+}
+
+footer p {
+    color: #94a3b8;
+}
+
+footer h4 {
+    margin-bottom: 15px;
+}
+
+footer a {
+    display: block;
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 8px 0;
+}
+
+footer a:hover {
+    color: white;
+}
+
+.copyright {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid #1e293b;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .categories,
+    .listings {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features,
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .promo,
+    .business {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 13px 15px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .nav-buttons .btn-outline {
+        display: none;
+    }
+
+    .hero {
+        padding: 55px 15px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        padding: 8px;
+    }
+
+    .search-box select {
+        border-left: none;
+        border-top: 1px solid var(--border);
+    }
+
+    .search-button {
+        padding: 14px;
+    }
+
+    .section {
+        padding: 50px 15px;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .categories,
+    .listings {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .category {
+        padding: 18px;
+    }
+
+    .card-image {
+        height: 140px;
+        font-size: 55px;
+    }
+
+    .card-body {
+        padding: 13px;
+    }
+
+    .card-body h3 {
+        font-size: 15px;
+    }
+
+    .price {
+        font-size: 18px;
+    }
+
+    .promo {
+        padding: 30px 20px;
+    }
+
+    .promo h2,
+    .business h2,
+    .cta h2 {
+        font-size: 30px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <a href="#" class="logo">
+            Trade<span>Nest</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#browse">Browse</a>
+            <a href="#categories">Categories</a>
+            <a href="#business">Businesses</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+        </nav>
+
+        <div class="nav-buttons">
+            <a href="#login" class="btn btn-outline">Log in</a>
+            <a href="#sell" class="btn btn-primary">Sell Something</a>
+        </div>
+
+    </div>
+
+</header>
+
+
+<section class="hero" id="browse">
+
+    <div class="hero-container">
+
+        <div class="hero-badge">
+            🇬🇧 Starting in London
+        </div>
+
+        <h1>
+            Buy. Sell.<br>
+            <span>Discover.</span>
+        </h1>
+
+        <p>
+            TradeNest makes it easy to buy and sell great products
+            from people and businesses in your local community.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                placeholder="What are you looking for?"
+                id="searchInput"
+            >
+
+            <select id="locationSelect">
+                <option>London</option>
+                <option>Westminster</option>
+                <option>Camden</option>
+                <option>Kensington</option>
+                <option>Southwark</option>
+                <option>Islington</option>
+            </select>
+
+            <button class="search-button" onclick="searchListings()">
+                Search
+            </button>
+
+        </div>
+
+        <div class="hero-actions">
+
+            <a href="#categories" class="btn btn-primary">
+                Browse Listings
+            </a>
+
+            <a href="#sell" class="btn btn-outline">
+                Sell Something
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="categories">
+
+    <div class="section-header">
+
+        <div>
+            <h2>Explore Categories</h2>
+            <p>Find something you need or discover something new.</p>
+        </div>
+
+        <a href="#browse" class="view-all">View all →</a>
+
+    </div>
+
+    <div class="categories">
+
+        <a href="#" class="category">
+            <div class="category-icon">📱</div>
+            <h3>Technology</h3>
+            <p>Phones, laptops & gadgets</p>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">👕</div>
+            <h3>Fashion</h3>
+            <p>Clothing, shoes & accessories</p>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">🏠</div>
+            <h3>Home & Garden</h3>
+            <p>Furniture & household items</p>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">🎮</div>
+            <h3>Games</h3>
+            <p>Consoles, games & accessories</p>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">🚗</div>
+            <h3>Motoring</h3>
+            <p>Cars, bikes & accessories</p>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">📚</div>
+            <h3>Books</h3>
+            <p>Books, magazines & media</p>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">🔧</div>
+            <h3>Tools</h3>
+            <p>Tools & equipment</p>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">💼</div>
+            <h3>Business</h3>
+            <p>Services & business listings</p>
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-header">
+
+        <div>
+            <h2>Featured Listings</h2>
+            <p>Some of the latest items available on TradeNest.</p>
+        </div>
+
+        <a href="#browse" class="view-all">See more →</a>
+
+    </div>
+
+    <div class="listings">
+
+        <div class="card">
+
+            <div class="card-image">
+                <span class="featured">FEATURED</span>
+                <button class="favourite" onclick="favourite(this)">♡</button>
+                📱
+            </div>
+
+            <div class="card-body">
+
+                <h3>Samsung Galaxy S24</h3>
+
+                <div class="price">£420</div>
+
+                <div class="card-meta">
+                    Excellent condition · Westminster
+                </div>
+
+                <a href="#" class="card-button">
+                    View Listing
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+
+                <button class="favourite" onclick="favourite(this)">
+                    ♡
+                </button>
+
+                🎮
+
+            </div>
+
+            <div class="card-body">
+
+                <h3>PlayStation 5</h3>
+
+                <div class="price">£350</div>
+
+                <div class="card-meta">
+                    Good condition · Camden
+                </div>
+
+                <a href="#" class="card-button">
+                    View Listing
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+
+                <button class="favourite" onclick="favourite(this)">
+                    ♡
+                </button>
+
+                🛋️
+
+            </div>
+
+            <div class="card-body">
+
+                <h3>Modern Sofa</h3>
+
+                <div class="price">£180</div>
+
+                <div class="card-meta">
+                    Good condition · Islington
+                </div>
+
+                <a href="#" class="card-button">
+                    View Listing
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+
+                <span class="featured">FEATURED</span>
+
+                <button class="favourite" onclick="favourite(this)">
+                    ♡
+                </button>
+
+                💻
+
+            </div>
+
+            <div class="card-body">
+
+                <h3>MacBook Pro</h3>
+
+                <div class="price">£650</div>
+
+                <div class="card-meta">
+                    Excellent condition · Southwark
+                </div>
+
+                <a href="#" class="card-button">
+                    View Listing
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-header">
+
+        <div>
+            <h2>Why TradeNest?</h2>
+            <p>Built to make local buying and selling simpler.</p>
+        </div>
+
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">🔎</div>
+
+            <h3>Easy to Discover</h3>
+
+            <p>
+                Search and browse products from people and businesses
+                across your local area.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🛡️</div>
+
+            <h3>Built Around Trust</h3>
+
+            <p>
+                Seller profiles, reporting tools and marketplace
+                features designed with safer trading in mind.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">📍</div>
+
+            <h3>Local First</h3>
+
+            <p>
+                Starting in London, TradeNest is designed to help
+                people discover what's available around them.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="business-section" id="business">
+
+    <div class="business">
+
+        <div>
+
+            <h2>Are you a business?</h2>
+
+            <p>
+                TradeNest isn't just for individuals. Businesses can
+                showcase their products and services to local customers.
+            </p>
+
+            <ul class="business-list">
+
+                <li>Create a professional business profile</li>
+                <li>Promote products and services</li>
+                <li>Reach customers across London</li>
+                <li>Build your presence on TradeNest</li>
+
+            </ul>
+
+            <a href="#pricing" class="btn btn-primary">
+                Explore Business Options
+            </a>
+
+        </div>
+
+
+        <div class="business-visual">
+
+            <h3>Example Business Profile</h3>
+
+            <div class="business-row">
+                <strong>London Tech Repairs</strong>
+                <span>⭐ 4.9</span>
+            </div>
+
+            <div class="business-row">
+                <span>📍 Westminster</span>
+                <span>✓ Verified</span>
+            </div>
+
+            <div class="business-row">
+                <span>Phone & laptop repairs</span>
+                <strong>View →</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="how-it-works">
+
+    <div class="section-header">
+
+        <div>
+            <h2>How TradeNest Works</h2>
+            <p>Getting started is simple.</p>
+        </div>
+
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>Find Something</h3>
+
+            <p>
+                Search through listings and discover products
+                from local sellers.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>Contact the Seller</h3>
+
+            <p>
+                View the listing and contact the seller to
+                arrange the next step.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>Trade</h3>
+
+            <p>
+                Arrange collection, delivery or another suitable
+                way to complete your transaction.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="pricing">
+
+    <div class="promo">
+
+        <div>
+
+            <h2>Get more from TradeNest</h2>
+
+            <p>
+                TradeNest Plus will give regular sellers more
+                tools and visibility as the marketplace grows.
+            </p>
+
+        </div>
+
+
+        <div class="promo-card">
+
+            <h3>TradeNest Plus</h3>
+
+            <div class="promo-price">
+                £4.99 <small>/month</small>
+            </div>
+
+            <ul>
+
+                <li>More listing opportunities</li>
+                <li>Enhanced seller profile</li>
+                <li>Greater listing visibility</li>
+                <li>Priority marketplace features</li>
+
+            </ul>
+
+            <a href="#" class="btn btn-primary" onclick="comingSoon(event)">
+                Join TradeNest Plus
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="cta" id="sell">
+
+    <h2>Ready to sell something?</h2>
+
+    <p>
+        Turn things you no longer need into money.
+        List your item on TradeNest and reach local buyers.
+    </p>
+
+    <a href="#" class="btn" onclick="sellComingSoon(event)">
+        Start Selling
+    </a>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+
+            <div class="footer-logo">
+                Trade<span>Nest</span>
+            </div>
+
+            <p>
+                A modern marketplace for buying and selling
+                locally, starting in London.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>Marketplace</h4>
+
+            <a href="#browse">Browse</a>
+            <a href="#categories">Categories</a>
+            <a href="#sell">Sell Something</a>
+
+        </div>
+
+
+        <div>
+
+            <h4>TradeNest</h4>
+
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#business">Businesses</a>
+
+        </div>
+
+
+        <div>
+
+            <h4>Help</h4>
+
+            <a href="#">Contact Us</a>
+            <a href="#">Safety</a>
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 TradeNest. All rights reserved.
+    </div>
+
+</footer>
+
+
+<script>
+
+function searchListings() {
+
+    const input = document.getElementById("searchInput").value.trim();
+    const location = document.getElementById("locationSelect").value;
+
+    if (input === "") {
+
+        alert("Please enter something to search for.");
+
+        return;
+    }
+
+    alert(
+        "TradeNest Search\n\n" +
+        "Searching for: " + input +
+        "\nLocation: " + location +
+        "\n\nThe full marketplace search will be connected to the TradeNest database in the next stage."
+    );
+}
+
+
+function favourite(button) {
+
+    if (button.innerHTML === "♡") {
+
+        button.innerHTML = "♥";
+
+    } else {
+
+        button.innerHTML = "♡";
+
+    }
+
+}
+
+
+function comingSoon(event) {
+
+    event.preventDefault();
+
+    alert(
+        "TradeNest Plus is coming soon.\n\n" +
+        "We're currently building the membership system."
+    );
+
+}
+
+
+function sellComingSoon(event) {
+
+    event.preventDefault();
+
+    alert(
+        "The TradeNest selling system is being built.\n\n" +
+        "Soon you'll be able to create an account, upload photos and publish your listings."
+    );
+
+}
+
+</script>
+
+</body>
+</html>
