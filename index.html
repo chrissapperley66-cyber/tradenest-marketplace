@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="TradeNest - Buy, sell and discover great deals from people and businesses across London.">
-
-<title>TradeNest | Buy. Sell. Discover.</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="TradeNest - Buy, sell and discover great deals from people and businesses across London."><title>TradeNest | Buy. Sell. Discover.</title><style>
 * {
     box-sizing: border-box;
     margin: 0;
@@ -33,6 +26,8 @@ body {
     color: var(--text);
     line-height: 1.6;
 }
+
+/* HEADER */
 
 header {
     background: rgba(255,255,255,0.97);
@@ -136,3 +131,1022 @@ header {
 .hero-badge {
     display: inline-block;
     background: #dbeafe;
+    color: #1d4ed8;
+    padding: 7px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 19px;
+    color: var(--muted);
+}
+
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* SEARCH */
+
+.search-box {
+    max-width: 850px;
+    margin: 40px auto 0;
+    background: white;
+    padding: 10px;
+    border-radius: 14px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px;
+    font-size: 16px;
+}
+
+.search-box select {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0 12px;
+}
+
+/* GENERAL */
+
+.section {
+    padding: 70px 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    color: var(--dark);
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: var(--muted);
+}
+
+/* CATEGORIES */
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.category {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 25px 15px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dark);
+    transition: 0.2s;
+}
+
+.category:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.category-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.category strong {
+    display: block;
+}
+
+.category small {
+    color: var(--muted);
+}
+
+/* SELL SECTION */
+
+.sell-section {
+    background: #ffffff;
+}
+
+.sell-card {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+}
+
+.form-group textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.file-box {
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    background: #f8fafc;
+}
+
+.file-box input {
+    border: none;
+    padding: 10px;
+}
+
+.file-help {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* LISTINGS */
+
+.listings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.listing {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.listing:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+}
+
+.listing-image {
+    height: 190px;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    overflow: hidden;
+}
+
+.listing-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.listing-content {
+    padding: 18px;
+}
+
+.listing-content h3 {
+    color: var(--dark);
+    margin-bottom: 5px;
+}
+
+.price {
+    color: var(--primary);
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.location {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* INFO */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.info-card {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+}
+
+.info-card h3 {
+    color: var(--dark);
+    margin: 10px 0;
+}
+
+.info-card p {
+    color: var(--muted);
+}
+
+.info-icon {
+    font-size: 32px;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 45px 20px;
+    text-align: center;
+}
+
+footer p {
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .navbar {
+        padding: 13px 15px;
+    }
+
+    .hero {
+        padding: 60px 18px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box select,
+    .search-box button {
+        width: 100%;
+        min-height: 45px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .listings {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .sell-card {
+        padding: 20px;
+    }
+}
+</style></head><body><header>
+    <nav class="navbar">    <a href="#home" class="logo">
+        Trade<span>Nest</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="#browse">Browse</a>
+        <a href="#categories">Categories</a>
+        <a href="#sell">Sell</a>
+        <a href="#how">How It Works</a>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="#sell" class="btn btn-primary">Sell an Item</a>
+    </div>
+
+</nav>
+
+</header><!-- HERO --><section class="hero" id="home"><div class="hero-container">
+
+    <div class="hero-badge">
+        🏙️ Buy & Sell Across London
+    </div>
+
+    <h1>
+        Buy. Sell.<br>
+        <span>Discover.</span>
+    </h1>
+
+    <p>
+        TradeNest makes it simple to buy and sell items locally.
+        Discover great deals from people and businesses around London.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="#browse" class="btn btn-primary">
+            Browse Listings
+        </a>
+
+        <a href="#sell" class="btn btn-outline">
+            Sell Something
+        </a>
+    </div>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="What are you looking for?"
+            onkeyup="searchListings()"
+        >
+
+        <select id="searchCategory" onchange="searchListings()">
+            <option value="all">All Categories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Vehicles">Vehicles</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Home">Home & Garden</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <button class="btn btn-primary" onclick="searchListings()">
+            Search
+        </button>
+
+    </div>
+
+</div>
+
+</section><!-- CATEGORIES --><section class="section" id="categories"><div class="container">
+
+    <div class="section-title">
+        <h2>Browse Categories</h2>
+        <p>Find what you're looking for quickly.</p>
+    </div>
+
+    <div class="categories">
+
+        <a href="#browse" class="category" onclick="filterCategory('Electronics')">
+            <div class="category-icon">📱</div>
+            <strong>Electronics</strong>
+            <small>Phones, computers & more</small>
+        </a>
+
+        <a href="#browse" class="category" onclick="filterCategory('Furniture')">
+            <div class="category-icon">🛋️</div>
+            <strong>Furniture</strong>
+            <small>Home & office furniture</small>
+        </a>
+
+        <a href="#browse" class="category" onclick="filterCategory('Vehicles')">
+            <div class="category-icon">🚗</div>
+            <strong>Vehicles</strong>
+            <small>Cars, bikes & more</small>
+        </a>
+
+        <a href="#browse" class="category" onclick="filterCategory('Fashion')">
+            <div class="category-icon">👕</div>
+            <strong>Fashion</strong>
+            <small>Clothes & accessories</small>
+        </a>
+
+        <a href="#browse" class="category" onclick="filterCategory('Home')">
+            <div class="category-icon">🏠</div>
+            <strong>Home & Garden</strong>
+            <small>Everything for your home</small>
+        </a>
+
+        <a href="#browse" class="category" onclick="filterCategory('Other')">
+            <div class="category-icon">📦</div>
+            <strong>Other</strong>
+            <small>Something different?</small>
+        </a>
+
+    </div>
+
+</div>
+
+</section><!-- BROWSE --><section class="section" id="browse"><div class="container">
+
+    <div class="section-title">
+        <h2>Latest Listings</h2>
+        <p>Items currently listed on TradeNest.</p>
+    </div>
+
+    <div class="listings" id="listingContainer">
+
+        <div class="listing" data-category="Electronics">
+
+            <div class="listing-image">
+                📱
+            </div>
+
+            <div class="listing-content">
+
+                <h3>Example Smartphone</h3>
+
+                <div class="price">
+                    £250
+                </div>
+
+                <div class="location">
+                    📍 London
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="listing" data-category="Furniture">
+
+            <div class="listing-image">
+                🛋️
+            </div>
+
+            <div class="listing-content">
+
+                <h3>Example Sofa</h3>
+
+                <div class="price">
+                    £150
+                </div>
+
+                <div class="location">
+                    📍 Westminster
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="listing" data-category="Other">
+
+            <div class="listing-image">
+                📦
+            </div>
+
+            <div class="listing-content">
+
+                <h3>Example Item</h3>
+
+                <div class="price">
+                    £50
+                </div>
+
+                <div class="location">
+                    📍 London
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section><!-- SELL --><section class="section sell-section" id="sell"><div class="container">
+
+    <div class="section-title">
+
+        <h2>Sell an Item</h2>
+
+        <p>
+            Create your listing and let buyers discover your item.
+        </p>
+
+    </div>
+
+
+    <div class="sell-card">
+
+        <form id="sellForm">
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="itemTitle">
+                        Item title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="itemTitle"
+                        placeholder="e.g. Samsung Galaxy S25 Ultra"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="itemPrice">
+                        Price (£)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="itemPrice"
+                        placeholder="250"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="itemCategory">
+                        Category
+                    </label>
+
+                    <select id="itemCategory" required>
+
+                        <option value="">
+                            Select a category
+                        </option>
+
+                        <option value="Electronics">
+                            Electronics
+                        </option>
+
+                        <option value="Furniture">
+                            Furniture
+                        </option>
+
+                        <option value="Vehicles">
+                            Vehicles
+                        </option>
+
+                        <option value="Fashion">
+                            Fashion
+                        </option>
+
+                        <option value="Home">
+                            Home & Garden
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="itemLocation">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="itemLocation"
+                        placeholder="e.g. Westminster"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="itemDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="itemDescription"
+                    placeholder="Tell buyers about your item..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Add photos
+                </label>
+
+                <div class="file-box">
+
+                    <input
+                        type="file"
+                        id="itemPhoto"
+                        accept="image/*"
+                        multiple
+                    >
+
+                    <div class="file-help">
+                        Add one or more photos of your item.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn btn-primary"
+                style="width:100%; font-size:16px;"
+            >
+                🚀 Create Listing
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</section><!-- HOW IT WORKS --><section class="section" id="how"><div class="container">
+
+    <div class="section-title">
+
+        <h2>How TradeNest Works</h2>
+
+        <p>
+            Selling something is simple.
+        </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                📝
+            </div>
+
+            <h3>1. Create a Listing</h3>
+
+            <p>
+                Add your item, price, location, description and photos.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🔎
+            </div>
+
+            <h3>2. Buyers Discover It</h3>
+
+            <p>
+                Your listing can be discovered by people looking for items on TradeNest.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🤝
+            </div>
+
+            <h3>3. Connect</h3>
+
+            <p>
+                Buyers and sellers can arrange the next step directly.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section><!-- FOOTER --><footer><h2>
+    Trade<span style="color:#60a5fa;">Nest</span>
+</h2>
+
+<p>
+    Buy. Sell. Discover.
+</p>
+
+<p>
+    © 2026 TradeNest. All rights reserved.
+</p>
+
+</footer><script>
+
+/* SEARCH */
+
+function searchListings() {
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const category =
+        document.getElementById("searchCategory")
+        .value;
+
+    const listings =
+        document.querySelectorAll(".listing");
+
+    listings.forEach(function(listing) {
+
+        const text =
+            listing.innerText.toLowerCase();
+
+        const listingCategory =
+            listing.getAttribute("data-category");
+
+        const searchMatch =
+            text.includes(search);
+
+        const categoryMatch =
+            category === "all" ||
+            listingCategory === category;
+
+        if (searchMatch && categoryMatch) {
+
+            listing.style.display = "";
+
+        } else {
+
+            listing.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* CATEGORY FILTER */
+
+function filterCategory(category) {
+
+    document.getElementById("searchCategory").value =
+        category;
+
+    searchListings();
+
+}
+
+
+/* SELL FORM */
+
+document.getElementById("sellForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const title =
+        document.getElementById("itemTitle").value;
+
+    const price =
+        document.getElementById("itemPrice").value;
+
+    const category =
+        document.getElementById("itemCategory").value;
+
+    const location =
+        document.getElementById("itemLocation").value;
+
+    const description =
+        document.getElementById("itemDescription").value;
+
+    const photoInput =
+        document.getElementById("itemPhoto");
+
+    const listingContainer =
+        document.getElementById("listingContainer");
+
+
+    /* Create listing */
+
+    const listing =
+        document.createElement("div");
+
+    listing.className = "listing";
+
+    listing.setAttribute(
+        "data-category",
+        category
+    );
+
+
+    /* Listing image */
+
+    const imageDiv =
+        document.createElement("div");
+
+    imageDiv.className =
+        "listing-image";
+
+
+    if (photoInput.files.length > 0) {
+
+        const image =
+            document.createElement("img");
+
+        image.src =
+            URL.createObjectURL(
+                photoInput.files[0]
+            );
+
+        image.alt = title;
+
+        imageDiv.appendChild(image);
+
+    } else {
+
+        imageDiv.textContent = "📦";
+
+    }
+
+
+    /* Listing content */
+
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "listing-content";
+
+
+    const heading =
+        document.createElement("h3");
+
+    heading.textContent =
+        title;
+
+
+    const priceElement =
+        document.createElement("div");
+
+    priceElement.className =
+        "price";
+
+    priceElement.textContent =
+        "£" + Number(price).toLocaleString(
+            "en-GB",
+            {
+                minimumFractionDigits: 2
+            }
+        );
+
+
+    const locationElement =
+        document.createElement("div");
+
+    locationElement.className =
+        "location";
+
+    locationElement.textContent =
+        "📍 " + location;
+
+
+    const descriptionElement =
+        document.createElement("p");
+
+    descriptionElement.style.marginTop =
+        "10px";
+
+    descriptionElement.style.color =
+        "#6b7280";
+
+    descriptionElement.textContent =
+        description;
+
+
+    content.appendChild(heading);
+    content.appendChild(priceElement);
+    content.appendChild(locationElement);
+    content.appendChild(descriptionElement);
+
+
+    listing.appendChild(imageDiv);
+    listing.appendChild(content);
+
+
+    listingContainer.prepend(listing);
+
+
+    /* Clear form */
+
+    document.getElementById("sellForm").reset();
+
+
+    /* Confirmation */
+
+    alert(
+        "Your listing has been created successfully!"
+    );
+
+
+    /* Go to listings */
+
+    document.getElementById("browse")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+});
+
+
+</script></body>
+</html>
