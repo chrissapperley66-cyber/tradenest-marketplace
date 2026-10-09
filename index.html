@@ -1,1152 +1,615 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="TradeNest - Buy, sell and discover great deals from people and businesses across London."><title>TradeNest | Buy. Sell. Discover.</title><style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --dark: #111827;
-    --text: #374151;
-    --muted: #6b7280;
-    --light: #f8fafc;
-    --border: #e5e7eb;
-    --white: #ffffff;
-    --green: #16a34a;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--light);
-    color: var(--text);
-    line-height: 1.6;
-}
-
-/* HEADER */
-
-header {
-    background: rgba(255,255,255,0.97);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.navbar {
-    max-width: 1200px;
-    margin: auto;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.logo {
-    font-size: 27px;
-    font-weight: 800;
-    color: var(--dark);
-    text-decoration: none;
-}
-
-.logo span {
-    color: var(--primary);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.nav-links a {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-}
-
-.nav-links a:hover {
-    color: var(--primary);
-}
-
-.nav-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 11px 18px;
-    border-radius: 9px;
-    text-decoration: none;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn-primary {
-    background: var(--primary);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
-}
-
-.btn-outline {
-    border: 1px solid var(--border);
-    background: white;
-    color: var(--dark);
-}
-
-.btn-outline:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-/* HERO */
-
-.hero {
-    background:
-        radial-gradient(circle at top right, rgba(37,99,235,0.16), transparent 35%),
-        linear-gradient(135deg, #eff6ff, #ffffff);
-    padding: 85px 20px 75px;
-}
-
-.hero-container {
-    max-width: 1100px;
-    margin: auto;
-    text-align: center;
-}
-
-.hero-badge {
-    display: inline-block;
-    background: #dbeafe;
-    color: #1d4ed8;
-    padding: 7px 14px;
-    border-radius: 30px;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    font-size: clamp(40px, 7vw, 68px);
-    line-height: 1.05;
-    color: var(--dark);
-    margin-bottom: 20px;
-}
-
-.hero h1 span {
-    color: var(--primary);
-}
-
-.hero p {
-    max-width: 700px;
-    margin: auto;
-    font-size: 19px;
-    color: var(--muted);
-}
-
-.hero-buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-/* SEARCH */
-
-.search-box {
-    max-width: 850px;
-    margin: 40px auto 0;
-    background: white;
-    padding: 10px;
-    border-radius: 14px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
-    display: flex;
-    gap: 10px;
-}
-
-.search-box input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 14px;
-    font-size: 16px;
-}
-
-.search-box select {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0 12px;
-}
-
-/* GENERAL */
-
-.section {
-    padding: 70px 20px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.section-title h2 {
-    color: var(--dark);
-    font-size: 34px;
-    margin-bottom: 8px;
-}
-
-.section-title p {
-    color: var(--muted);
-}
-
-/* CATEGORIES */
-
-.categories {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.category {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 25px 15px;
-    text-align: center;
-    text-decoration: none;
-    color: var(--dark);
-    transition: 0.2s;
-}
-
-.category:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-}
-
-.category-icon {
-    font-size: 35px;
-    margin-bottom: 10px;
-}
-
-.category strong {
-    display: block;
-}
-
-.category small {
-    color: var(--muted);
-}
-
-/* SELL SECTION */
-
-.sell-section {
-    background: #ffffff;
-}
-
-.sell-card {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.06);
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    display: block;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 7px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    font-family: inherit;
-    font-size: 15px;
-    outline: none;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: var(--primary);
-}
-
-.form-group textarea {
-    min-height: 130px;
-    resize: vertical;
-}
-
-.file-box {
-    border: 2px dashed #cbd5e1;
-    border-radius: 12px;
-    padding: 25px;
-    text-align: center;
-    background: #f8fafc;
-}
-
-.file-box input {
-    border: none;
-    padding: 10px;
-}
-
-.file-help {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 5px;
-}
-
-/* LISTINGS */
-
-.listings {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.listing {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    transition: 0.2s;
-}
-
-.listing:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.07);
-}
-
-.listing-image {
-    height: 190px;
-    background: #e5e7eb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
-    overflow: hidden;
-}
-
-.listing-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.listing-content {
-    padding: 18px;
-}
-
-.listing-content h3 {
-    color: var(--dark);
-    margin-bottom: 5px;
-}
-
-.price {
-    color: var(--primary);
-    font-size: 21px;
-    font-weight: 800;
-}
-
-.location {
-    color: var(--muted);
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-/* INFO */
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.info-card {
-    background: white;
-    padding: 28px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-}
-
-.info-card h3 {
-    color: var(--dark);
-    margin: 10px 0;
-}
-
-.info-card p {
-    color: var(--muted);
-}
-
-.info-icon {
-    font-size: 32px;
-}
-
-/* FOOTER */
-
-footer {
-    background: var(--dark);
-    color: white;
-    padding: 45px 20px;
-    text-align: center;
-}
-
-footer p {
-    color: #9ca3af;
-    margin-top: 8px;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-}
-
-/* MOBILE */
-
-@media (max-width: 800px) {
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyWise | University Assignment Support</title>
+  <meta name="description"
+        content="Professional university assignment support, study guidance, referencing, Excel help and one-to-one academic tutoring.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #172033;
+      background: #f7f9fc;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* NAVIGATION */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid #e6eaf0;
+      padding: 15px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #183b70;
+    }
+    .logo span {
+      color: #3b82f6;
+    }
     .nav-links {
-        display: none;
+      display: flex;
+      gap: 25px;
+      align-items: center;
     }
-
-    .navbar {
-        padding: 13px 15px;
+    .nav-links a {
+      font-weight: 600;
+      color: #334155;
     }
-
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+    .nav-button {
+      background: #2563eb;
+      color: white !important;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+    /* HERO */
     .hero {
-        padding: 60px 18px;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding: 80px 7%;
+      background:
+        radial-gradient(circle at 80% 20%, #dbeafe 0, transparent 30%),
+        linear-gradient(135deg, #f8fbff, #eef4ff);
     }
-
-    .search-box {
-        flex-direction: column;
+    .hero-content {
+      max-width: 760px;
     }
-
-    .search-box select,
-    .search-box button {
-        width: 100%;
-        min-height: 45px;
+    .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-weight: 700;
+      margin-bottom: 22px;
+      font-size: 0.9rem;
     }
-
-    .categories {
-        grid-template-columns: repeat(2, 1fr);
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.7rem);
+      line-height: 1.05;
+      margin-bottom: 25px;
+      color: #102a56;
     }
-
-    .listings {
+    .hero h1 span {
+      color: #2563eb;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #526173;
+      max-width: 680px;
+      margin-bottom: 35px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .button {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 9px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+    .primary {
+      background: #2563eb;
+      color: white;
+    }
+    .primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+    .secondary {
+      background: white;
+      border: 1px solid #d6deea;
+      color: #1e3a6d;
+    }
+    .secondary:hover {
+      border-color: #2563eb;
+    }
+    /* GENERAL SECTIONS */
+    section {
+      padding: 80px 7%;
+    }
+    .section-heading {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 50px;
+    }
+    .section-heading h2 {
+      font-size: 2.3rem;
+      color: #102a56;
+      margin-bottom: 15px;
+    }
+    .section-heading p {
+      color: #64748b;
+      font-size: 1.05rem;
+    }
+    /* SERVICES */
+    .services {
+      background: white;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+    .service-card {
+      background: #f8fafc;
+      border: 1px solid #e5eaf1;
+      padding: 30px;
+      border-radius: 15px;
+      transition: 0.25s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(30, 64, 175, 0.10);
+    }
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: #dbeafe;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      color: #173b70;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      color: #64748b;
+    }
+    /* HOW IT WORKS */
+    .steps {
+      background: #f1f5f9;
+    }
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .step {
+      text-align: center;
+      padding: 25px;
+    }
+    .step-number {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .step h3 {
+      margin-bottom: 8px;
+      color: #173b70;
+    }
+    .step p {
+      color: #64748b;
+    }
+    /* WHY US */
+    .why {
+      background: white;
+    }
+    .why-container {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .why h2 {
+      font-size: 2.4rem;
+      color: #102a56;
+      margin-bottom: 20px;
+    }
+    .why p {
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+    .check-list {
+      list-style: none;
+    }
+    .check-list li {
+      margin: 14px 0;
+      font-weight: 600;
+    }
+    .check-list li::before {
+      content: "✓";
+      color: #2563eb;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #173b70, #2563eb);
+      color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(37,99,235,0.2);
+    }
+    .highlight-box h3 {
+      font-size: 1.7rem;
+      margin-bottom: 15px;
+    }
+    .highlight-box p {
+      color: #dbeafe;
+    }
+    /* RESOURCES */
+    .resources {
+      background: #f8fafc;
+    }
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+    .resource {
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+    }
+    .resource h3 {
+      color: #173b70;
+      margin-bottom: 10px;
+    }
+    .resource p {
+      color: #64748b;
+      margin-bottom: 18px;
+    }
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, #102a56, #2563eb);
+      color: white;
+      text-align: center;
+    }
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .cta p {
+      max-width: 650px;
+      margin: 0 auto 30px;
+      color: #dbeafe;
+    }
+    .cta .button {
+      background: white;
+      color: #173b70;
+    }
+    /* DISCLAIMER */
+    .disclaimer {
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+      padding: 30px 7%;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 40px 7%;
+      text-align: center;
+    }
+    footer strong {
+      color: white;
+    }
+    footer p {
+      margin: 8px 0;
+    }
+    /* MOBILE */
+    @media (max-width: 700px) {
+      nav {
+        padding: 14px 5%;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding: 70px 6%;
+        min-height: 580px;
+      }
+      section {
+        padding: 65px 6%;
+      }
+      .why-container {
         grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        font-size: 1.05rem;
+      }
     }
-
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-
-    .sell-card {
-        padding: 20px;
-    }
-}
-</style></head><body><header>
-    <nav class="navbar">    <a href="#home" class="logo">
-        Trade<span>Nest</span>
-    </a>
-
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">
+      Study<span>Wise</span>
+    </div>
     <div class="nav-links">
-        <a href="#browse">Browse</a>
-        <a href="#categories">Categories</a>
-        <a href="#sell">Sell</a>
-        <a href="#how">How It Works</a>
+      <a href="#services">Support</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact" class="nav-button">Get Support</a>
     </div>
-
-    <div class="nav-buttons">
-        <a href="#sell" class="btn btn-primary">Sell an Item</a>
+  </nav>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="badge">
+        University Study & Assignment Support
+      </div>
+      <h1>
+        Understand your assignment.
+        <span>Improve your work.</span>
+      </h1>
+      <p>
+        Friendly, practical support for university students who want
+        help understanding assignments, organising their work,
+        improving their academic skills and becoming more confident
+        with their studies.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="button primary">
+          Get Support
+        </a>
+        <a href="#services" class="button secondary">
+          Explore Services
+        </a>
+      </div>
     </div>
-
-</nav>
-
-</header><!-- HERO --><section class="hero" id="home"><div class="hero-container">
-
-    <div class="hero-badge">
-        🏙️ Buy & Sell Across London
+  </header>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-heading">
+      <h2>How We Can Help</h2>
+      <p>
+        Practical academic support designed to help you understand
+        what your university is asking you to do and produce your
+        own confident work.
+      </p>
     </div>
-
-    <h1>
-        Buy. Sell.<br>
-        <span>Discover.</span>
-    </h1>
-
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="icon">📚</div>
+        <h3>Assignment Guidance</h3>
+        <p>
+          Break down your assignment brief, understand the questions
+          and create a clear plan for completing your work.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">✍️</div>
+        <h3>Academic Writing</h3>
+        <p>
+          Improve structure, clarity, paragraphs, arguments and
+          academic writing techniques.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🔎</div>
+        <h3>Research Skills</h3>
+        <p>
+          Learn how to find suitable sources, evaluate information
+          and build evidence into your own arguments.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">📖</div>
+        <h3>Referencing</h3>
+        <p>
+          Get help understanding academic referencing, citations,
+          bibliographies and avoiding accidental plagiarism.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">📊</div>
+        <h3>Excel & Data</h3>
+        <p>
+          Practical help with Excel, calculations, tables,
+          charts, financial analysis and university projects.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🎓</div>
+        <h3>Study Skills</h3>
+        <p>
+          Improve planning, organisation, time management and
+          confidence when working on university assignments.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- HOW IT WORKS -->
+  <section class="steps" id="how-it-works">
+    <div class="section-heading">
+      <h2>How It Works</h2>
+      <p>
+        Simple, straightforward support without the jargon.
+      </p>
+    </div>
+    <div class="step-grid">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Tell Us What You Need</h3>
+        <p>
+          Explain the assignment, subject or problem you're
+          struggling with.
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Get Personal Support</h3>
+        <p>
+          Work through the problem with practical guidance
+          tailored to your situation.
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Build Your Skills</h3>
+        <p>
+          Understand the process so you can apply what you've
+          learned to future assignments.
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Submit With Confidence</h3>
+        <p>
+          Complete your own work with a clearer understanding
+          of what your university expects.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- WHY US -->
+  <section class="why">
+    <div class="why-container">
+      <div>
+        <h2>Support that helps you learn.</h2>
+        <p>
+          University assignments can be confusing, particularly
+          when you're trying to understand academic terminology,
+          assessment criteria and referencing requirements.
+        </p>
+        <p>
+          Our aim is to make the process easier to understand
+          while helping you develop skills you can use throughout
+          your degree.
+        </p>
+        <ul class="check-list">
+          <li>Friendly one-to-one guidance</li>
+          <li>Clear explanations</li>
+          <li>Practical study techniques</li>
+          <li>Excel and data support</li>
+          <li>Referencing guidance</li>
+          <li>Help understanding assignment briefs</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <h3>
+          You don't have to figure everything out alone.
+        </h3>
+        <p>
+          Whether you're starting an assignment, struggling with
+          structure or simply don't understand what the question
+          is asking, we can help you work through it step by step.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- RESOURCES -->
+  <section class="resources" id="resources">
+    <div class="section-heading">
+      <h2>Free Student Resources</h2>
+      <p>
+        Useful guides and tools to help you become more confident
+        with university study.
+      </p>
+    </div>
+    <div class="resource-grid">
+      <div class="resource">
+        <h3>Assignment Planning Guide</h3>
+        <p>
+          A simple framework for turning an assignment brief
+          into a practical plan.
+        </p>
+        <a href="#" class="button secondary">
+          Coming Soon
+        </a>
+      </div>
+      <div class="resource">
+        <h3>University Referencing Guide</h3>
+        <p>
+          Understand the basic principles behind citations
+          and reference lists.
+        </p>
+        <a href="#" class="button secondary">
+          Coming Soon
+        </a>
+      </div>
+      <div class="resource">
+        <h3>Excel for Students</h3>
+        <p>
+          Practical Excel techniques for calculations,
+          tables, analysis and presentations.
+        </p>
+        <a href="#" class="button secondary">
+          Coming Soon
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <h2>Need Help With Your Assignment?</h2>
     <p>
-        TradeNest makes it simple to buy and sell items locally.
-        Discover great deals from people and businesses around London.
+      Get in touch and tell us what you're working on.
+      We'll discuss what support would be useful and how
+      we can help you understand the task.
     </p>
-
-    <div class="hero-buttons">
-        <a href="#browse" class="btn btn-primary">
-            Browse Listings
-        </a>
-
-        <a href="#sell" class="btn btn-outline">
-            Sell Something
-        </a>
-    </div>
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="What are you looking for?"
-            onkeyup="searchListings()"
-        >
-
-        <select id="searchCategory" onchange="searchListings()">
-            <option value="all">All Categories</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Furniture">Furniture</option>
-            <option value="Vehicles">Vehicles</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Home">Home & Garden</option>
-            <option value="Other">Other</option>
-        </select>
-
-        <button class="btn btn-primary" onclick="searchListings()">
-            Search
-        </button>
-
-    </div>
-
-</div>
-
-</section><!-- CATEGORIES --><section class="section" id="categories"><div class="container">
-
-    <div class="section-title">
-        <h2>Browse Categories</h2>
-        <p>Find what you're looking for quickly.</p>
-    </div>
-
-    <div class="categories">
-
-        <a href="#browse" class="category" onclick="filterCategory('Electronics')">
-            <div class="category-icon">📱</div>
-            <strong>Electronics</strong>
-            <small>Phones, computers & more</small>
-        </a>
-
-        <a href="#browse" class="category" onclick="filterCategory('Furniture')">
-            <div class="category-icon">🛋️</div>
-            <strong>Furniture</strong>
-            <small>Home & office furniture</small>
-        </a>
-
-        <a href="#browse" class="category" onclick="filterCategory('Vehicles')">
-            <div class="category-icon">🚗</div>
-            <strong>Vehicles</strong>
-            <small>Cars, bikes & more</small>
-        </a>
-
-        <a href="#browse" class="category" onclick="filterCategory('Fashion')">
-            <div class="category-icon">👕</div>
-            <strong>Fashion</strong>
-            <small>Clothes & accessories</small>
-        </a>
-
-        <a href="#browse" class="category" onclick="filterCategory('Home')">
-            <div class="category-icon">🏠</div>
-            <strong>Home & Garden</strong>
-            <small>Everything for your home</small>
-        </a>
-
-        <a href="#browse" class="category" onclick="filterCategory('Other')">
-            <div class="category-icon">📦</div>
-            <strong>Other</strong>
-            <small>Something different?</small>
-        </a>
-
-    </div>
-
-</div>
-
-</section><!-- BROWSE --><section class="section" id="browse"><div class="container">
-
-    <div class="section-title">
-        <h2>Latest Listings</h2>
-        <p>Items currently listed on TradeNest.</p>
-    </div>
-
-    <div class="listings" id="listingContainer">
-
-        <div class="listing" data-category="Electronics">
-
-            <div class="listing-image">
-                📱
-            </div>
-
-            <div class="listing-content">
-
-                <h3>Example Smartphone</h3>
-
-                <div class="price">
-                    £250
-                </div>
-
-                <div class="location">
-                    📍 London
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="listing" data-category="Furniture">
-
-            <div class="listing-image">
-                🛋️
-            </div>
-
-            <div class="listing-content">
-
-                <h3>Example Sofa</h3>
-
-                <div class="price">
-                    £150
-                </div>
-
-                <div class="location">
-                    📍 Westminster
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="listing" data-category="Other">
-
-            <div class="listing-image">
-                📦
-            </div>
-
-            <div class="listing-content">
-
-                <h3>Example Item</h3>
-
-                <div class="price">
-                    £50
-                </div>
-
-                <div class="location">
-                    📍 London
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section><!-- SELL --><section class="section sell-section" id="sell"><div class="container">
-
-    <div class="section-title">
-
-        <h2>Sell an Item</h2>
-
-        <p>
-            Create your listing and let buyers discover your item.
-        </p>
-
-    </div>
-
-
-    <div class="sell-card">
-
-        <form id="sellForm">
-
-            <div class="form-row">
-
-                <div class="form-group">
-
-                    <label for="itemTitle">
-                        Item title
-                    </label>
-
-                    <input
-                        type="text"
-                        id="itemTitle"
-                        placeholder="e.g. Samsung Galaxy S25 Ultra"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="itemPrice">
-                        Price (£)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="itemPrice"
-                        placeholder="250"
-                        min="0"
-                        step="0.01"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-            <div class="form-row">
-
-                <div class="form-group">
-
-                    <label for="itemCategory">
-                        Category
-                    </label>
-
-                    <select id="itemCategory" required>
-
-                        <option value="">
-                            Select a category
-                        </option>
-
-                        <option value="Electronics">
-                            Electronics
-                        </option>
-
-                        <option value="Furniture">
-                            Furniture
-                        </option>
-
-                        <option value="Vehicles">
-                            Vehicles
-                        </option>
-
-                        <option value="Fashion">
-                            Fashion
-                        </option>
-
-                        <option value="Home">
-                            Home & Garden
-                        </option>
-
-                        <option value="Other">
-                            Other
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="itemLocation">
-                        Location
-                    </label>
-
-                    <input
-                        type="text"
-                        id="itemLocation"
-                        placeholder="e.g. Westminster"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="itemDescription">
-                    Description
-                </label>
-
-                <textarea
-                    id="itemDescription"
-                    placeholder="Tell buyers about your item..."
-                    required
-                ></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Add photos
-                </label>
-
-                <div class="file-box">
-
-                    <input
-                        type="file"
-                        id="itemPhoto"
-                        accept="image/*"
-                        multiple
-                    >
-
-                    <div class="file-help">
-                        Add one or more photos of your item.
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="btn btn-primary"
-                style="width:100%; font-size:16px;"
-            >
-                🚀 Create Listing
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-</section><!-- HOW IT WORKS --><section class="section" id="how"><div class="container">
-
-    <div class="section-title">
-
-        <h2>How TradeNest Works</h2>
-
-        <p>
-            Selling something is simple.
-        </p>
-
-    </div>
-
-
-    <div class="info-grid">
-
-        <div class="info-card">
-
-            <div class="info-icon">
-                📝
-            </div>
-
-            <h3>1. Create a Listing</h3>
-
-            <p>
-                Add your item, price, location, description and photos.
-            </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-            <div class="info-icon">
-                🔎
-            </div>
-
-            <h3>2. Buyers Discover It</h3>
-
-            <p>
-                Your listing can be discovered by people looking for items on TradeNest.
-            </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-            <div class="info-icon">
-                🤝
-            </div>
-
-            <h3>3. Connect</h3>
-
-            <p>
-                Buyers and sellers can arrange the next step directly.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section><!-- FOOTER --><footer><h2>
-    Trade<span style="color:#60a5fa;">Nest</span>
-</h2>
-
-<p>
-    Buy. Sell. Discover.
-</p>
-
-<p>
-    © 2026 TradeNest. All rights reserved.
-</p>
-
-</footer><script>
-
-/* SEARCH */
-
-function searchListings() {
-
-    const search =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase();
-
-    const category =
-        document.getElementById("searchCategory")
-        .value;
-
-    const listings =
-        document.querySelectorAll(".listing");
-
-    listings.forEach(function(listing) {
-
-        const text =
-            listing.innerText.toLowerCase();
-
-        const listingCategory =
-            listing.getAttribute("data-category");
-
-        const searchMatch =
-            text.includes(search);
-
-        const categoryMatch =
-            category === "all" ||
-            listingCategory === category;
-
-        if (searchMatch && categoryMatch) {
-
-            listing.style.display = "";
-
-        } else {
-
-            listing.style.display = "none";
-
-        }
-
-    });
-
-}
-
-
-/* CATEGORY FILTER */
-
-function filterCategory(category) {
-
-    document.getElementById("searchCategory").value =
-        category;
-
-    searchListings();
-
-}
-
-
-/* SELL FORM */
-
-document.getElementById("sellForm")
-.addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-    const title =
-        document.getElementById("itemTitle").value;
-
-    const price =
-        document.getElementById("itemPrice").value;
-
-    const category =
-        document.getElementById("itemCategory").value;
-
-    const location =
-        document.getElementById("itemLocation").value;
-
-    const description =
-        document.getElementById("itemDescription").value;
-
-    const photoInput =
-        document.getElementById("itemPhoto");
-
-    const listingContainer =
-        document.getElementById("listingContainer");
-
-
-    /* Create listing */
-
-    const listing =
-        document.createElement("div");
-
-    listing.className = "listing";
-
-    listing.setAttribute(
-        "data-category",
-        category
-    );
-
-
-    /* Listing image */
-
-    const imageDiv =
-        document.createElement("div");
-
-    imageDiv.className =
-        "listing-image";
-
-
-    if (photoInput.files.length > 0) {
-
-        const image =
-            document.createElement("img");
-
-        image.src =
-            URL.createObjectURL(
-                photoInput.files[0]
-            );
-
-        image.alt = title;
-
-        imageDiv.appendChild(image);
-
-    } else {
-
-        imageDiv.textContent = "📦";
-
-    }
-
-
-    /* Listing content */
-
-    const content =
-        document.createElement("div");
-
-    content.className =
-        "listing-content";
-
-
-    const heading =
-        document.createElement("h3");
-
-    heading.textContent =
-        title;
-
-
-    const priceElement =
-        document.createElement("div");
-
-    priceElement.className =
-        "price";
-
-    priceElement.textContent =
-        "£" + Number(price).toLocaleString(
-            "en-GB",
-            {
-                minimumFractionDigits: 2
-            }
-        );
-
-
-    const locationElement =
-        document.createElement("div");
-
-    locationElement.className =
-        "location";
-
-    locationElement.textContent =
-        "📍 " + location;
-
-
-    const descriptionElement =
-        document.createElement("p");
-
-    descriptionElement.style.marginTop =
-        "10px";
-
-    descriptionElement.style.color =
-        "#6b7280";
-
-    descriptionElement.textContent =
-        description;
-
-
-    content.appendChild(heading);
-    content.appendChild(priceElement);
-    content.appendChild(locationElement);
-    content.appendChild(descriptionElement);
-
-
-    listing.appendChild(imageDiv);
-    listing.appendChild(content);
-
-
-    listingContainer.prepend(listing);
-
-
-    /* Clear form */
-
-    document.getElementById("sellForm").reset();
-
-
-    /* Confirmation */
-
-    alert(
-        "Your listing has been created successfully!"
-    );
-
-
-    /* Go to listings */
-
-    document.getElementById("browse")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-});
-
-
-</script></body>
+    <!-- CHANGE THIS EMAIL ADDRESS -->
+    <a
+      href="mailto:YOUR-EMAIL-ADDRESS-HERE"
+      class="button">
+      Contact Us
+    </a>
+  </section>
+  <!-- ACADEMIC INTEGRITY -->
+  <div class="disclaimer">
+    <strong>Academic integrity:</strong>
+    Our service provides educational guidance, tutoring,
+    proofreading and study support. Students remain responsible
+    for producing and submitting their own assessed work.
+  </div>
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <strong>StudyWise</strong> — University Assignment Support
+    </p>
+    <p>
+      © 2026 StudyWise. All rights reserved.
+    </p>
+  </footer>
+</body>
 </html>
